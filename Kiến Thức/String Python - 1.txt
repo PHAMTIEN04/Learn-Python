@@ -1,0 +1,19 @@
+- Trong Python, chuỗi là những thứ được đặt trong cặp dấu ‘ ’, hoặc “ ”,  có thể cũng là trong cặp 
+‘’’ ‘’’, “”” “””. Nhưng cơ bản và thường đường sử dụng nhất là cặp ‘ ‘ và “ “.
+Ví dụ:
+
+>>> ’How Kteam’
+‘How Kteam’
+>>> s = ‘Free Education’   # gán cho biến s với giá trị là một chuỗi
+>>> s
+‘Free Education’
+>>> player  = “Kteam”     # gán cho biến player với một chuỗi có giá trị là ‘Kteam’
+>>> player
+‘Kteam’
+>>> ‘# day la comment’  # không đâu,  nó là chuỗi. Đây mới là comment
+‘# day la comment’
+>>> s = “String”
+>>> type(s)   # và kiểu dữ liệu chuỗi sẽ thuộc lớp ‘str’
+<class ‘str’>
+
+Chi tiết đọc thêm tại :  https://howkteam.vn/course/kieu-du-lieu-chuoi-trong-python--phan-5/kieu-du-lieu-chuoi-trong-python--phan-1-1541

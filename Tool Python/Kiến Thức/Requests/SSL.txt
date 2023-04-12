@@ -1,0 +1,25 @@
+SSL requests trong Python là một thư viện được sử dụng để thực hiện các yêu cầu HTTP và HTTPS trên Python. Thư viện này cho phép giao tiếp với các trang web hoặc ứng dụng trên mạng bằng cách sử dụng các yêu cầu được mã hóa SSL.
+
+Một số thuộc tính chính của SSL request bao gồm:
+
+Cho phép kiểm tra xác thực SSL và chứng chỉ cho các yêu cầu HTTPS, đảm bảo an toàn khi gửi dữ liệu trên mạng.
+Cung cấp các phương thức để quản lý cookie và phiên.
+Hỗ trợ các phương thức GET, POST, PUT, DELETE, HEAD, PATCH và OPTIONS.
+Hỗ trợ JSON và XML, cho phép truy cập và xử lý dữ liệu từ các tài nguyên Web.
+Để sử dụng SSL request trong Python, trước tiên bạn cần cài đặt thư viện. Bạn có thể sử dụng PIP, trình quản lý gói chuẩn cho Python, để cài đặt như sau:
+
+Copy
+Insert
+New
+pip install requests
+Sau khi cài đặt, bạn có thể sử dụng các phương thức của SSL request để tải tài nguyên từ các trang web hoặc ứng dụng trên mạng. Ví dụ:
+
+Copy
+Insert
+New
+import requests
+
+response = requests.get('https://www.google.com')
+print(response.status_code) # Kiểm tra trạng thái kết nối
+print(response.text) # In ra nội dung tải về từ trang web
+Trong ví dụ này, chúng ta sử dụng phương thức requests.get() để tải nội dung từ trang web Google. Lệnh response.status_code được sử dụng để kiểm tra trạng thái kết nối và response.text để in ra nội dung tải về từ trang web.

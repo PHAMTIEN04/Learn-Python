@@ -1,0 +1,22 @@
+# Return là câu lệnh trong Python để trả về giá trị từ một hàm. 
+# Khi một hàm được gọi và thực hiện xong, nó có thể trả về kết quả bằng cách sử dụng câu lệnh return.
+# Giá trị được trả về có thể được sử dụng trong chương trình sau đó hoặc được in ra màn hình.
+
+# Ví dụ:
+
+# Hàm tính tổng của hai số
+def add_numbers(a, b):
+    result = a + b
+    return result
+  
+# Sử dụng hàm add_numbers() và lấy giá trị trả về để in ra màn hình
+sum = add_numbers(5, 7)
+print("Tổng của hai số là:", sum)
+# Output:
+
+
+# Tổng của hai số là: 12
+# Trong ví dụ này, hàm add_numbers() tính tổng của hai số và trả về kết quả bằng câu lệnh return.
+# Giá trị trả về được lưu vào biến sum và in ra màn hình bằng lệnh print().
+
+# Đọc thêm chi tiết tại https://howkteam.vn/course/lap-trinh-python-co-ban/kieu-du-lieu-function-trong-python-return-2718

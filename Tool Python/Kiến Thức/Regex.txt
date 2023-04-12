@@ -1,0 +1,14 @@
+regex là viết tắt của regular expression, nó có thể được hiểu như một chuỗi các ký tự đặc biệt mô tả một mẫu, dùng để tìm kiếm và xác định các chuỗi khớp với mẫu đó trong một văn bản.
+
+Trong Python, regex được triển khai thông qua module re, cho phép bạn sử dụng các hàm để tìm kiếm hoặc thay thế thông tin trong các chuỗi dữ liệu. Việc sử dụng regex cho phép xử lý dữ liệu linh hoạt và hiệu quả hơn, cho các ứng dụng từ tìm kiếm chuỗi con, loại bỏ phiên bản trùng lặp, mã hóa thông tin, cũng như nhiều mục đích khác.
+
+Ví dụ Bạn có thể sử dụng 'regex' để tìm kiếm tất cả các từ python trong một string
+
+
+import re
+
+mystring = Python is a scripting language. I love programming with python.
+matches = re.findall(python, mystring, re.IGNORECASE)
+
+print(matches) # ['Python', 'python']
+Trong ví dụ trên, re.findall() được sử dụng để tìm kiếm tất cả các trường hợp của python trong mystring. Tham số thứ hai là chuỗi cần tìm kiếm, và tùy chọn re.IGNORECASE được sử dụng để cho phép tìm kiếm không phân biệt chữ hoa và chữ thường. Kết quả sẽ trả về danh sách các chuỗi khớp với mức độ khớp tương ứng ở dạng không phân biệt chữ hoa và chữ thường.

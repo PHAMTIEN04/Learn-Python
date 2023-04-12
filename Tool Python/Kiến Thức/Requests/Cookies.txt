@@ -1,0 +1,19 @@
+HTTP cookies là một cơ chế để máy chủ ghi và lưu trữ thông tin trên máy tính của người dùng và tìm kiếm lại những thông tin này trong những lần truy cập sau.
+Cookies giúp cho việc duyệt web trở nên thuận tiện hơn khi người dùng không cần phải đăng nhập lại mỗi lần truy cập vào một trang web công cụ HTTP Cookies
+được sử dụng để lưu thông tin phiên làm việc, token xác thực, hiển thị các thông báo cho trang web.
+
+Trong Python, thư viện requests có hỗ trợ sử dụng các cookies trong HTTP request/response. Việc thực hiện của cookie trong Python giúp lưu trữ thông tin
+nhạy cảm và gửi thông tin truy vấn giữa client và server, có thể là session ID, đăng nhập thông tin để truy cập thông tin trên trang web.
+
+Ví dụ để sử dụng Cookie trong Python thì ta có thể sử dụng method .get_cookie_dict() của response object. Sau đó, bạn có thể dùng {} dictionary 
+của Python để gửi lại những thông tin này cho trình duyệt hoặc API khác trong quá trình làm việc.
+
+
+import requests
+
+url = "https://httpbin.org/cookies/set/sessioncookie/123456789"
+
+
+response = requests.get(url)
+
+print(response.cookies.get_dict()) # {'sessioncookie': '123456789'}

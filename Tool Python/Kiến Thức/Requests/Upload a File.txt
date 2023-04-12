@@ -1,0 +1,14 @@
+Trong Python, bạn có thể upload file bằng cách sử dụng thư viện requests và gửi yêu cầu POST HTTP. Ta cần đưa các thông tin file vào body của yêu cầu dưới định dạng Multi-Part Form Data.
+
+Đây là một ví dụ về cách upload file bằng requests:
+
+
+import requests
+
+url = 'https://example.com/upload'
+files = { 'file': open('path/to/file', 'rb') }
+
+response = requests.post(url, files=files)
+Trong ví dụ này, chúng ta đưa đường dẫn của file trên máy tính vào hàm open(). Khi đó, ta sử dụng requests.post() để gửi yêu cầu POST tới địa chỉ url và thông tin file được đính kèm trong body của yêu cầu thông qua biến files.
+
+Khi đó, biến response chứa phản hồi từ máy chủ.

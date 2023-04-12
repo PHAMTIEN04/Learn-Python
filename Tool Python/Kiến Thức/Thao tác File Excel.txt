@@ -1,0 +1,45 @@
+Để thao tác với file Excel trong Python, bạn cần sử dụng một module được gọi là "openpyxl". Bạn có thể cài đặt module này bằng cách sử dụng trình quản lý gói pip của Python, chạy lệnh sau ở terminal hoặc command prompt:
+
+pip install openpyxl
+
+Sau khi đã cài đặt xong module, bạn cần import nó trong script Python bằng câu lệnh sau:
+
+import openpyxl
+
+Khi đã import module openpyxl, bạn có thể sử dụng các hàm và lớp được cung cấp để thao tác với file Excel.
+
+Ví dụ:
+
+Để mở một file Excel và đọc dữ liệu từ một sheet cụ thể, bạn có thể sử dụng mã sau:
+
+from openpyxl import load_workbook
+
+# Mở file Excel
+workbook = load_workbook(filename="example.xlsx")
+
+# Chọn sheet cần đọc dữ liệu
+sheet = workbook["Sheet1"]
+
+# Đọc dữ liệu từ ô A1
+value = sheet["A1"].value
+
+# In kết quả
+print(value)
+
+Để tạo một file Excel mới và viết dữ liệu vào sheet, bạn có thể sử dụng mã sau:
+
+from openpyxl import Workbook
+
+# Tạo workbook mới
+workbook = Workbook()
+
+# Chọn sheet đầu tiên
+sheet = workbook.active
+
+# Ghi dữ liệu vào ô A1
+sheet["A1"] = "Hello, world!"
+
+# Lưu file Excel
+workbook.save(filename="example.xlsx")
+
+Các ví dụ trên chỉ là các hành động cơ bản để thao tác với file Excel trong Python. Module openpyxl còn rất nhiều tính năng khác giúp bạn thực hiện các tác vụ phức tạp hơn như đọc và ghi dữ liệu trong nhiều sheet cùng một lúc, định dạng font chữ, màu sắc, kích thước các ô,... Bạn có thể tham khảo thêm tại đường link sau: https://openpyxl.readthedocs.io/en/stable/

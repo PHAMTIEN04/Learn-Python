@@ -1,0 +1,3 @@
+Redirection trong Python là quá trình điều hướng người dùng từ URL đầu tiên đến một URL khác. Khi một request được gửi tới server, nó có thể gây ra việc chuyển hướng (redirection) cho request này tới một trang khác.
+ 
+Điều này thường xảy ra khi URL bạn yêu cầu đã bị thay đổi hoặc không có sẵn nữa. Để xử lý các yêu cầu tới các URL mới này, các phương thức redirection sẽ được sử dụng như GET và POST. Redirection tất nhiên cũng có thể được mô tả theo các mã response status code như 301 hoặc 302 redirect codes.

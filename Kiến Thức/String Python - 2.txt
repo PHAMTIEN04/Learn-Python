@@ -1,0 +1,58 @@
+Chuỗi trần là gì?
+Nếu bạn còn nhớ những ví dụ lần trước trong bài KIỂU DỮ LIỆU CHUỖI (Phần 1), 
+Kteam đưa ra trong phần Escape Sequence là gì? Bạn dễ nhận thấy rằng, đôi khi bạn gặp 
+trường hợp không mong muốn có escape sequen.
+Điển hình như ví dụ sau.
+Bạn muốn in ra một dòng chuỗi với nội dung như sau:
+
+Haizz, \neu mot ngay nao do.
+
+Và trong Python
+
+>>> print(‘Haizz, \neu mot ngay nao do’)
+Haizz,
+eu mot ngay nao do
+
+Kết quả không mong muốn. May thay, bạn biết đó là do tác dụng của Escape Sequence. 
+Và bạn cũng biết sử dụng Escape Sequence để có được kết quả như mình muốn
+
+>>> print(‘Haizz, \\neu mot nay nao do’)
+Haizz,
+\neu mot ngay nao do
+
+Nhưng hãy đặt vấn đề, ví dụ như bạn thao tác với các đường dẫn file trên 
+hệ điều hành Windows. Các đường dẫn file này sẽ có dạng
+
+Ổ_đĩa:\Thư_mục\Thư_mục
+Sẽ rao sao nếu tên thư mục bắt đầu với các chữ cái t, n, a, v, b,… và kết hợp với kí tự \. Nó thành Escape Sequence, kết quả mà bạn không muốn. Và rất nhiều trường hợp khác mà việc bạn sửa Escape Sequence một cách thủ công là không chấp nhận được.
+
+Vì lý do đó, Python cho phép bạn sử dụng một dạng chuỗi, gọi là CHUỖI TRẦN. 
+Chuỗi trần này sẽ không quan tấm đến thứ gọi là Escape Sequence.
+
+Cú pháp
+r’nội dung chuỗi’
+
+Ví dụ:
+
+>>> a = r’\neu mot ngay’   # chuỗi trần, bỏ qua Escape Sequence \n
+>>> print(a)
+\neu mot ngay’
+1
+2
+3
+Sự thật thì, chuỗi trần không phải bỏ qua các Escape Sequence, mà nó sẽ giúp chúng 
+ta sửa những Escape Sequence đó, như cách chúng ta làm
+
+>>> a = r’\neu mot ngay’
+>>> a  # nội dung chuỗi trần gán vào biến a
+‘\\neu mot ngay’
+1
+2
+3
+Và bạn sẽ phải sử dụng chuỗi trần này một cách thường xuyên, đặc biệt là khi bạn làm
+ việc với BIỂU THỨC CHÍNH QUY (Regular Expression) sẽ được Kteam giới thiệu trong 
+tương lai.
+
+Chi Tiết Đọc Thêm Tại : https://howkteam.vn/course/lap-trinh-python-co-ban/kieu-du-lieu-chuoi-trong-python--phan-2-1542
+
+

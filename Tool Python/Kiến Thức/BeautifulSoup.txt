@@ -1,0 +1,25 @@
+BeautifulSoup là một thư viện mã nguồn mở trong Python, được sử dụng để phân tích cú pháp của các tài liệu HTML và XML. Với BeautifulSoup, bạn có thể dễ dàng truy cập và chỉnh sửa các thành phần trong tài liệu HTML/XML như các thẻ HTML, nội dung văn bản, các thuộc tính, các phần tử con, vv. BeautifulSoup cung cấp nhiều phương thức để điều hướng và trích xuất thông tin từ tài liệu HTML/XML, giúp cho việc phân tích và xử lý dữ liệu trở nên dễ dàng và thuận tiện hơn.
+
+ Cú pháp của thư viện BeautifulSoup trong Python như sau:
+
+Import thư viện:
+Code
+# import bs4
+
+Tạo đối tượng BeautifulSoup từ nội dung HTML:
+code
+# soup = bs4.BeautifulSoup(html_doc, 'html.parser')
+
+Sử dụng phương thức select để tìm các phần tử trong nội dung HTML dựa trên CSS Selector:
+code
+# eles = soup.select('tag_selector')
+
+Sử dụng phương thức get_text() để lấy nội dung của một phần tử HTML:
+code
+# ele.get_text()
+
+Trong đó:
+
+# html_doc: là chuỗi HTML cần phân tích.
+# tag_selector: là CSS Selector để lựa chọn phần tử.
+# ele: là đối tượng phần tử HTML được chọn.

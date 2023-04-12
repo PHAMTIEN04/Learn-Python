@@ -1,0 +1,9 @@
+Trong Python, Sessions là một khái niệm được sử dụng để lưu trữ thông tin phiên liên quan đến cài đặt tương tác của client với server.
+
+Khi gửi các yêu cầu HTTP cho một website cụ thể bằng requests library, nó phải xác nhận lại thông qua các tùy chọn sau mỗi request (headers, cookies,..). Sử dụng Session, thì các thông tin này được lưu trữ và tái sử dụng cho các yêu cầu tiếp theo, giúp tăng tốc quá trình tương tác với server.
+
+Một số lợi ích khi sử dụng sessions trong Python:
+
+Tự động bảo toàn cookies: session có thể lưu giữ và đẩy các cookie từ HTTP Responses trở lại các HTTP Requests.
+Tự động quản lý header : Session đã tự động bao gồm các tiêu đề header trong toàn bộ yêu cầu của bạn một cách gần như tự động cho tất cả các yêu cầu tiếp theo.
+Tự động theo dõi CMSF: chỉ cần sử dụng method DELETE hoặc PUT mà không phải lo ngại về việc thêm csrf token vào phía trước.

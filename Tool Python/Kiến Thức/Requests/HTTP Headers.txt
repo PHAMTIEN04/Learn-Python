@@ -1,0 +1,23 @@
+HTTP Headers là các thông tin bổ sung được gửi kèm theo các request hoặc response HTTP. Trong Python, bạn có thể tạo và sửa đổi các Header 
+này bằng cách sử dụng thư viện requests.
+
+Các HTTP Headers chứa thông tin như loại nội dung (Content-Type), độ dài nội dung (Content-Length), mã hóa (Encoding), v.v. 
+Các Headers này thường được sử dụng để điều khiển cách mà thông tin được gửi và xử lý trên máy chủ hoặc trình duyệt. Ví dụ:
+
+Content-Type: header xác định kiểu nội dung của request hoặc response (ví dụ: JSON, HTML, XML, v.v.)
+
+import requests
+
+url = 'https://example.com/api/get_data'
+headers = {'Content-Type': 'application/json'}
+
+response = requests.get(url, headers=headers)
+User-Agent: header giúp máy chủ biết request đến từ trình duyệt hay ứng dụng nào.
+
+import requests
+
+url = 'https://example.com'
+headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3'}
+
+response = requests.get(url, headers=headers)
+Bạn có thể thêm các thông tin khác vào Headers theo yêu cầu của dự án hoặc API mà bạn đang làm việc với.

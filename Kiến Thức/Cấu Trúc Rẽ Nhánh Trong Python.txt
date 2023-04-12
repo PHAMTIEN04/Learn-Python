@@ -1,0 +1,38 @@
+# Cấu trúc rẽ nhánh trong Python
+# Trong Python, cấu trúc rẽ nhánh được sử dụng để kiểm soát luồng của chương trình dựa trên điều kiện.
+# Nó cho phép chương trình thực hiện một hoặc một nhóm lệnh nếu điều kiện đúng và thực hiện một hoặc một 
+# nhóm lệnh khác nếu điều kiện sai.
+# Cấu trúc rẽ nhánh trong Python có cú pháp như sau:
+if condition:
+    # do something
+ else:
+    # do something else
+
+
+# Với cấu trúc này, nếu điều kiện condition đúng, chương trình sẽ thực hiện các câu lệnh ở phần 
+# "do something" và bỏ qua phần "do something else" ở phía cuối cấu trúc. Ngược lại, nếu điều kiện 
+# condition sai, chương trình sẽ bỏ qua phần "do something" và thực hiện các câu lệnh ở phần
+# "do something else".
+
+# Ngoài ra, cấu trúc rẽ nhánh còn có thể được mở rộng với nhiều biểu thức điều kiện khác nhau bằng cách 
+# sử dụng các từ khóa elif (viết tắt của "else if"). Ví dụ:
+
+if condition1:
+    # do something
+elif condition2:
+    # do something else
+else:
+    # do something else again
+
+
+# Ở đây, nếu điều kiện condition1 đúng, chương trình sẽ thực hiện phần "do something" 
+# và bỏ qua các phần khác. Nếu condition1 sai nhưng condition2 đúng, chương trình sẽ thực hiện phần
+# "do something else". Cuối cùng, nếu cả hai điều kiện đều sai, chương trình sẽ thực hiện phần 
+# "do something else again".
+
+# Nên nhớ rằng Biểu thức điều kiện trong cấu trúc rẽ nhánh phải trả về kết quả là True hoặc False. 
+# Các biểu thức này có thể được xác định bằng một số điều kiện, ví dụ như so sánh các giá trị với các toán tử
+# so sánh (<, >, <=, >=, ==, !=) hoặc sử dụng các toán tử logic (ví dụ: and, or, not).
+
+
+# ĐỌC THÊM CHI TIẾT TẠI : https://howkteam.vn/course/kieu-du-lieu-boolean-trong-python/cau-truc-re-nhanh-trong-python-2594

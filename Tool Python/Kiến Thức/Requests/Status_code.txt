@@ -1,0 +1,7 @@
+status_code trong Python (cụ thể là đoạn code trên sử dụng thư viện requests) là một thuộc tính của đối tượng Response trả về từ request nhằm xác định mã trạng thái HTTP của response. Cụ thể, mã trạng thái HTTP là một phần của trường header trong response HTTP để xác định kết quả yêu cầu. Mã trạng thái này được sử dụng để chỉ rõ liệu yêu cầu đã được xử lý thành công hay không và thông báo các lỗi liên quan tới kết quả xử lý yêu cầu. Mã trạng thái HTTP thường được biểu diễn dưới dạng số nguyên và có giá trị từ 100 đến 599. Ví dụ:
+
+Status code 200 : OK
+Status code 404: Not Found
+Status code 403: Forbidden
+
+Việc kiểm tra mã trạng thái rất hữu ích trong trường hợp xử lý các yêu cầu HTTP trong Python để từ đó quyết định các hành động tiếp theo, ví dụ như in ra thông báo lỗi nếu status code khác 200 hoặc 204.

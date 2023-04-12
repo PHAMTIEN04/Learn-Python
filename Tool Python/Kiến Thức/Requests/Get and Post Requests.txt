@@ -1,0 +1,16 @@
+Cả GET và POST là 2 phương thức HTTP được sử dụng để truyền tải dữ liệu giữa client (phía user) và server.
+
+Phương thức GET:
+
+Là phương thức mặc định khi browser gửi yêu cầu khi người dùng nhập URL và nhấn enter vào thanh địa chỉ.
+Sử dụng phương thức này, dữ liệu được gửi lên server trong query string có thể được xem trực tiếp từ thanh địa chỉ.
+Thường được sử dụng để lấy các tài nguyên (resource) từ server. Ví dụ: lấy nội dung (content) của trang web, ảnh, videos...
+Phương thức POST:
+
+Là phương thức sử dụng khi người dùng điền thông tin mà không cho trình duyệt thực thi theo quy luật mặc định và click vào nút "Gửi" hoặc "Đăng ký", "Bình Luận", "Đăng Nhập"..v.v.
+Dữ liệu được gửi lên server được đặt trong thân (body) của yêu cầu HTTP, vì thế, nó không hiển thị trên thanh địa chỉ.
+Phương thức này thường được sử dụng trong việc gửi thông tin nhạy cảm như số thẻ tín dụng, tài khoản ngân hàng, đăng nhập, chuyển tiền...
+Trong đoạn code Python trên:
+
+Đoạn đầu : data được gửi lên server qua phương thức 'POST' và được đặt trong thuộc tính 'data' của request.
+Đoạn sau : Data được gửi lên server qua phương thức 'GET' và được đặt trong param của request url.

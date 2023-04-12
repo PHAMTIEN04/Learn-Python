@@ -1,0 +1,25 @@
+Trình thông dịch Python cung cấp một cấu trúc lặp không giới hạn gọi là "while loop" (vòng lặp trong khi). Cấu trúc while loop cho phép lặp lại một khối mã nếu một điều kiện cụ thể là True.
+
+Cú pháp của while loop trong Python như sau:
+
+code
+while (condition):
+    # Code block to be executed while condition is True
+Khi chạy, trình thông dịch Python đánh giá điều kiện, nếu điều kiện là True, nó sẽ thực thi khối mã bên trong vòng lặp, sau đó quay lại đánh giá điều kiện lại. Việc này tiếp tục cho đến khi điều kiện trở thành False, lúc đó vòng lặp sẽ dừng.
+
+Ví dụ, đoạn mã sau đây sử dụng while loop để tính tổng của tất cả các số từ 1 đến 10:
+
+code
+total = 0
+count = 1
+
+while (count <= 10):
+    total += count
+    count += 1
+
+print("Tổng của các số từ 1 đến 10 là:", total)
+Kết quả sẽ là:
+
+code
+Tổng của các số từ 1 đến 10 là: 55
+Trong đoạn mã trên, biến count bắt đầu từ 1 và tăng lên mỗi lần vòng lặp được thực thi, và biến total được cập nhật với giá trị của count mỗi lần vòng lặp được thực thi. Vòng lặp dừng lại khi count vượt qua giá trị 10.

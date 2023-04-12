@@ -1,0 +1,22 @@
+JSON là viết tắt của "JavaScript Object Notation". Nó là một định dạng dữ liệu được sử dụng để truyền thông tin giữa các ứng dụng web và mobile. JSON đơn giản và dễ dàng hiểu, là định dạng chuẩn được chấp nhận rộng rãi cho trao đổi dữ liệu giữa các máy chủ và ứng dụng.
+
+Trong quá trình phát triển ứng dụng, người lập trình cần phải giao tiếp với các API (Application Programming Interface) từ các bên thứ ba để có thể lấy/gửi thông tin giữa hệ thống của mình, sử dụng những thông tin này để đưa ra những quyết định nhanh và dẫn đến kết quả và sản phẩm tốt hơn.
+
+Requests là một thư viện được sử dụng để thực hiện các yêu cầu HTTP trong Python. Trong thư viện requests, ta có thể sử dụng các method như get(), post(), put()... để gửi các yêu cầu HTTP đến server và nhận lại response. request.post() cho phép chúng ta gửi yêu cầu HTTP POST đến server với các đối số khác nhau như: data, json, files, header...
+
+Ví dụ:
+
+Copy
+Insert
+New
+import requests
+url = "https://jsonplaceholder.typicode.com/posts"
+data = {
+    "userId": 10,
+    "id": 101,
+    "title": "Test Title",
+    "body": "This is a test body."
+}
+response = requests.post(url=url, json=data)
+print(response.text)
+Ở ví dụ trên, đoạn mã cho phép gửi một yêu cầu HTTP POST với dữ liệu payload là data đã được định nghĩa trước vào URL https://jsonplaceholder.typicode.com/posts. Đối số json=data cho biết rằng payload là một đối tượng JSON được mã hóa từ dict data. Kết quả trả về là một đối tượng Response, chứa các thuộc tính và phương thức để lấy thông tin về response.

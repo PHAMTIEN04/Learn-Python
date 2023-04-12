@@ -1,0 +1,15 @@
+# : Nhận xét bắt đầu bằng # và Python sẽ bỏ qua chúng
+Ví dụ 
+#This is a comment
+print("Hello, World!")
+
+
+Vì Python sẽ bỏ qua các ký tự chuỗi không được gán cho một biến, nên bạn có thể thêm một chuỗi
+nhiều dòng (ba dấu ngoặc kép) vào mã của mình và đặt nhận xét của bạn bên trong nó:
+Ví dụ :
+"""
+This is a comment
+written in
+more than just one line
+"""
+print("Hello, World!")

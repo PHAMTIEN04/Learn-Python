@@ -1,0 +1,46 @@
+*Định Ngĩa : Biến là các thùng chứa để lưu trữ các giá trị dữ liệu.
+
+*Tạo biến :Python không có lệnh khai báo biến.
+         Một biến được tạo ngay khi bạn gán giá trị cho nó lần đầu tiên.
+Ví dụ :
+x = 5
+y = "John"
+print(x)
+print(y)
+
+* Các biến không cần phải khai báo với bất kỳ loại cụ thể nào và 
+thậm chí có thể thay đổi loại sau khi chúng đã được đặt.
+Ví dụ :
+x = 4       # x is of type int
+x = "Sally" # x is now of type str
+print(x)
+
+*Casting :
+Nếu bạn muốn chỉ định kiểu dữ liệu của một biến, điều này có thể được 
+thực hiện bằng cách ép kiểu.
+
+Ví dụ : 
+x = str(3)    # x will be '3'
+y = int(3)    # y will be 3
+z = float(3)  # z will be 3.0
+
+*Type : 
+Bạn có thể lấy kiểu dữ liệu của một biến bằng hàm type().
+Ví dụ : 
+x = 5
+y = "John"
+print(type(x))
+print(type(y))
+
+* Các biến chuỗi có thể được khai báo bằng cách sử dụng dấu nháy đơn 
+hoặc kép:
+Ví dụ : 
+x = "John"
+# is the same as
+x = 'John'
+
+NOTE : Để Print không xuống dòng ta dùng print (str, end ='')
+
+
+
+

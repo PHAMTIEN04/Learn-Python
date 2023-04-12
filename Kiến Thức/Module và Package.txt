@@ -1,0 +1,9 @@
+# MODULE
+Trong lập trình, module là các file chứa mã nguồn Python có thể được sử dụng để mở rộng chức năng của ngôn ngữ Python. Mỗi module bao gồm hàm, biến và lớp định nghĩa trong đó. Những module này có thể được tải và sử dụng trong các chương trình khác nhau, giúp cho việc phát triển phần mềm trở nên dễ dàng hơn bằng cách sử dụng lại code có sẵn. Điều này làm giảm thời gian phát triển và cải thiện tính tái sử dụng của mã.
+
+# PACKAGE
+Trong Python, package là một thư mục chứa nhiều module. Nó có thể được hiểu như là một cái tủ chứa các file và thư mục (các subpackage) liên quan đến nhau. Package giúp cho việc tổ chức code trở nên dễ dàng và có tính module hóa cao.
+
+Mỗi package chứa một file có tên là __init__.py, điều này cho phép nó được xem là một package bởi Python. File này có thể không có nội dung gì, hoặc chứa các câu lệnh import hoặc khai báo biến để có thể được sử dụng trong toàn bộ package.
+
+Việc sử dụng package giúp cho các module có chức năng tương đồng được nhóm lại với nhau, giảm thiểu việc xung đột tên và tạo ra module có tính tái sử dụng cao hơn.

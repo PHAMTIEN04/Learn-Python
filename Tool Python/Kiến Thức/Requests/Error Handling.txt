@@ -1,0 +1,12 @@
+*Error handling
+Error handling trong Python được sử dụng để xử lý các lỗi hoặc exceptions mà có thể xảy ra trong quá trình chạy chương trình. Nó cho phép xác định và giải quyết các tình huống lỗi này theo cách phù hợp với ngữ cảnh của ứng dụng.
+
+Các lỗi có thể xuất hiện trong Python bao gồm các loại như NameError, TypeError, ValueError, ZeroDivisionError, IndexError,... Sử dụng try-except block, chúng ta có thể xác định và xử lý các lỗi này để có thể giải quyết thành công các tình huống lỗi.
+
+Với try xử lý code, nếu có một exception xảy ra, nó sẽ sinh ra một thông báo lỗi và dừng chương trình. Tuy nhiên, nếu chúng ta sử dụng nó kết hợp với except block, chúng ta có thể xử lý các exception một cách an toàn và tiếp tục chương trình.
+
+*Exceptions 
+Exceptions trong python là các sự kiện không mong muốn xảy ra khi chương trình được thực thi. Chẳng hạn, FileNotFound, ZeroDivisionError, IndexError, KeyError... Các exceptions giúp chương trình dễ dàng quản lý và thống nhất các lỗi liên quan tới từng loại exception. Đồng thời, chúng ta có thể xử lý và giải quyết các lỗi này thông qua cơ chế Exception Handling (xử lý exception) trong python.
+
+*RequestException
+RequestException là lớp cơ sở (base class) cho các exception exceptions do requests module ném ra. Nó bao gồm tất cả các exceptions mạng có thể xảy ra. Bằng cách khai báo except requests.exceptions.RequestException chúng ta đang xử lí tất cả các trường hợp lỗi mạng được quy định bới requests module.

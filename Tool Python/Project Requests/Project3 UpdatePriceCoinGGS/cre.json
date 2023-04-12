@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "pricecoinggs",
+  "private_key_id": "07e5df1181fcedee04a03d91f954429055e95015",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCv/BN28U/UTKFp\nVGozWU40y6WEky9NHpuUmESyCDlSOvoVhnvgKgopfqMyX5/9ntC2sUA+LZqFv9Ea\nYonomtuZ6nawo668bHfYGPo+L6Rn6SLJm0zX9zV9QDe7kvribHlQc8UitFMkWYO4\nJf7pdN6cQbJapMY4p4+FNCgYjVZis71wak9aL9hgAUavgiivwzZGhPk+20gv3tJ5\nlC/vqW/8iuUPTLnUzcsJ0sh7jteZNranB3x3qDnJYsagA0LjSAE0RPZBmRBBp2gG\n6/Jk2Hnw0kn4GpothsO/ifLg1jPHBNvnn18zNUkYl/vKwsVlwNCwzrV0pWAyK66l\ngzxuEU+pAgMBAAECggEAVGMp6kU4pHLCi8GA03Klf8ePbQ0vB2n/7Lc/aadr5TSG\nqz+7svg1u0QQeZ1FGNbI+nHwfmBb0nryiBZsTu/DEgFOPNGgfpX8udDwXlV2HqW6\nmrYvmPff3Fmo3/dQ+rZNTfjVtRiHLc0GzozZuZTjEkamgbS1oIEo3xTtjShpHhaI\nQVckqvXbEvCYXIuhBMU7Au2/z60xRGiVE1EHamuDNhnR2lDSTHeiGxyBWEkVYsAq\nJwuDgFnF/ejzCyFGz9q+8u+MMxyqJdMEn6UiEdqFlrHmRCbtcWGRe86jCa96aGdD\nhrj8FoyHQkqbPs9TKISb/pL2iE0bhgzuJFRCpOhhqQKBgQD433yarRd5FIfPRKo1\nNSfIHlLU4jKw5bleSJgsJ8K7m1XiHtrbFekY+E08ME0W5dlFX4QEN1xTFjfaoiVD\nLNp5WUR51VOb0IxeY56Gvf0ShPXBfKu6UqPEGjXJ30Xv69c+IpP9Cy+mR3kqrVDO\nNRpUydr0N46rWfl2g6c2Dp+ZlwKBgQC1BjzSIbX3gbr3i+q5Km5VzH828JV9IKa0\nVbCkEYStXGR4nfOh/2lCyU852UoD/Swq2rukFBGnU1ySpPUzEqVCiNo00CsVcBHY\nXWDLWCkjibaII70Qb5xAKw3zNN0VDK075v5LTVevb8qnp/Dduf7uLr6JDXxWv1Sc\nUb01VXcIvwKBgQDJAZheRVckEBTwrwDaIKiU1QkJr/hJMAHbyL4/S43YgMmI7GrP\ncI7oAARBjLF2wQYPJeo2jZAf+135U+TMsLl0MUlBLa9tta7pvYQYR/LStljXgZ4h\nywVCKfkvpwmRkeYy5TKpuhMuNaQDeCA/rFwsByy0+vpcIzt9ITA4VO9K2QKBgDoy\n7S7po6UVUlTv6ODrIVn4SxYQtx7pdm8X9ZhqAWvy/mJA9ekpQmA0dII2t7McnCyS\n8izIPvy6slJ7MlHfNr5zXSQJoTBdPX+AVfRKPb+tMMAILWqxV1zR+sQsRL/VuYQ+\nuZbgIMbIfDD2r1u5xpow8RUC/uysyrkPFnOlLIXlAoGAMQgKD7csHxaZzV5cYexq\nM5Mm5JSz7ZxdogD1V2Nu+uSwKiWT+2bWFV4d6MDmt9OSopy4pNkgwuPQsXIIydlD\na3S4zH+Mfc/AIkA73LDIGdh9JnMgZp7uWzdba+rqf7clvU4JhvXS5mmWvcr9/q6A\nGSXD+sLQhf6vTttN15bXtCg=\n-----END PRIVATE KEY-----\n",
+  "client_email": "googlesheetpricecoin@pricecoinggs.iam.gserviceaccount.com",
+  "client_id": "106273268245014717655",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/googlesheetpricecoin%40pricecoinggs.iam.gserviceaccount.com"
+}

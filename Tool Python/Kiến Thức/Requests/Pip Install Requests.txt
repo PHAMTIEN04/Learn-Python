@@ -1,0 +1,6 @@
+Bạn có thể cài đặt requests bằng cách sử dụng pip (package installer for Python) bằng cách chạy lệnh sau trong terminal hoặc command prompt.
+
+pip install requests
+
+Với cách cài đặt này, hệ thống sẽ tự động tải và cài đặt packages requests và các dependencies liên quan.
+

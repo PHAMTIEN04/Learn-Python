@@ -1,0 +1,43 @@
+Đọc File Text
+Để đọc một file text trong Python, ta sử dụng hàm open() để mở file và hàm read() để đọc nội dung của file.
+
+f = open("filename.txt", "r")
+print(f.read())
+Khi sử dụng hàm open(), ta có thể truyền vào 2 tham số:
+
+Tham số thứ nhất là tên của file cần đọc.
+Tham số thứ hai là chế độ mở file.
+Chế độ "r": chỉ đọc file (read).
+Chế độ "w": ghi nội dung vào file (write). Nếu file đã tồn tại, việc ghi vào file sẽ xóa hết nội dung cũ của file.
+Chế độ "a": thêm nội dung vào cuối file (append).
+Sau khi đọc xong nội dung của file, ta nên đóng file bằng hàm close().
+
+
+f.close()
+Viết File Text
+Để viết nội dung vào file text, ta sử dụng hàm open() kèm theo chế độ "w" để mở file.
+
+
+f = open("filename.txt", "w")
+f.write("Hello World!")
+f.close()
+Hoặc ta có thể sử dụng chế độ "a" để thêm nội dung vào cuối file:
+
+
+f = open("filename.txt", "a")
+f.write("This is another line.")
+f.close()
+Ngoài ra, ta còn có thể sử dụng hàm with để tự động đóng file sau khi hoàn thành các thao tác.
+
+
+with open("file.txt", "w") as f:
+    f.write("Hello World!")
+Thao tác với các chuỗi trong File Text
+Sau khi đọc được chuỗi từ file text, ta có thể thực hiện các thao tác xử lý chuỗi như trong Python thông thường.
+
+Ví dụ: Đếm số dòng của file text.
+
+
+with open("file.txt", "r") as f:
+    lines = f.readlines()
+    print(len(lines))

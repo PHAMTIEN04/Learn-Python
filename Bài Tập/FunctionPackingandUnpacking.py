@@ -1,0 +1,87 @@
+# Packing và unpacking arguments là khái niệm trong Python.
+
+#*Packing Arguments (Đóng gói đối số)
+# Packing Arguments được sử dụng để truyền một số lượng bất kỳ các đối số vào hàm sử dụng dấu * . Đây còn được gọi là cú pháp varargs. Ví dụ:
+def my_func(*args):
+    for arg in args:
+        print(arg)
+        
+my_func(1, 2, "Xin chào", [3, 4])
+
+# Trong ví dụ này, chúng ta định nghĩa một hàm my_func có cú pháp *args cho tham số của nó. Điều này có nghĩa là bất kỳ số lượng đối số nào được truyền vào hàm 
+# này sẽ được đóng gói vào một tuple được đặt tên là args. Khi chúng ta gọi my_func, chúng ta truyền vào bốn đối số - một số nguyên, một số nguyên khác, 
+# một chuỗi và một danh sách. Các đối số này được đóng gói vào một tuple, sau đó được gán cho biến args. Kết quả sẽ là:
+# 1
+# 2
+# "Xin chào"
+# [3, 4]
+
+# *Unpacking Arguments (Mở gói đối số)
+# Unpacking Arguments được sử dụng để truyền một tập hợp (ví dụ như danh sách, tuple hoặc từ điển) thành các đối số riêng lẻ cho một hàm.
+# Điều này được thực hiện bằng cách sử dụng các ký tự * và ** . Ví dụ:
+def my_func(a, b, c):
+    print(f"a = {a}")
+    print(f"b = {b}")
+    print(f"c = {c}")
+
+my_list = [1, 2, 3]
+my_func(*my_list)
+# Trong ví dụ này, chúng ta định nghĩa một hàm my_func có ba tham số a, b và c. Sau đó, chúng ta tạo ra một danh sách my_list với ba phần tử.
+# Chúng ta có thể truyền my_list vào my_func bằng cách sử dụng toán tử * trước my_list khi gọi hàm. Điều này cho biết cho Python mở gói các phần tử của
+# my_list và truyền chúng vào my_func dưới dạng các đối số riêng lẻ. Kết quả sẽ là:
+# a = 1
+# b = 2
+# c = 3
+def my_func(a, b, c):
+    print(f"a = {a}")
+    print(f"b = {b}")
+    print(f"c = {c}")
+
+my_dict = {'a': 1, 'b': 2, 'c': 3}
+my_func(**my_dict)
+# Trong ví dụ này, chúng ta định nghĩa một hàm my_func có ba tham số a, b và c. Sau đó, chúng ta tạo ra một từ điển my_dict với ba cặp khóa-giá trị.
+# Chúng ta có thể truyền my_dict vào my_func bằng cách sử dụng toán tử hai dấu sao (**). Điều này cho biết cho Python mở gói các cặp khóa-giá trị của my_dict 
+# và truyền chúng vào my_func dưới dạng các đối số có tên. Kết quả sẽ là:
+# a = 1
+# b = 2
+# c = 3
+
+# Đọc Thêm Chi Tiết Tại https://howkteam.vn/course/lap-trinh-python-co-ban/kieu-du-lieu-function-trong-python-packing-va-unpacking-arguments-2655
+
+
+
+
+#unpacking
+
+def kteam(k,t,e,r):
+    print(k,t,e,r)
+    
+lst = [1,2,3,4]
+kteam(*lst)
+
+#packing
+
+def kteam1(*agrs):
+    print(agrs)
+
+lst = [1,2,3,4]
+kteam(*lst)
+
+
+#unpacking agrument voi **
+dic = {'name': 'Kteam', 'member': 69}
+
+def kteam2(name,member):
+    print("name =>",name)
+    print("member =>",member)
+    
+    
+kteam2(**dic)
+
+
+#packing argument voi **
+
+def kteam3(**args):
+    print(args)
+
+kteam3(classs='b11',old = "17")

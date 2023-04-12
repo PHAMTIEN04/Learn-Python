@@ -1,0 +1,18 @@
+Proxy requests trong Python có nghĩa là sử dụng một máy chủ trung gian để thực hiện các yêu cầu web thay vì kết nối trực tiếp từ client đến server. Khi thực hiện proxy requests, tất cả các yêu cầu của client được gửi đến máy chủ proxy, sau đó máy chủ proxy sẽ tiếp tục gửi các yêu cầu này đến server và trả lại phản hồi cho client.
+
+Việc sử dụng proxy requests có thể giúp ẩn danh người dùng khi truy cập vào các trang web bị cấm hoặc giới hạn theo địa lý. Ngoài ra, việc sử dụng proxy cũng có thể cải thiện hiệu suất bằng cách giảm độ trễ khi truy cập vào các trang web từ xa.
+
+Để thực hiện proxy requests trong Python, ta có thể sử dụng các thư viện như requests hoặc urllib. Các thư viện này cung cấp các hàm để xây dựng các yêu cầu HTTP/HTTPS kết hợp với các tham số để chỉ định máy chủ proxy được sử dụng. Ví dụ:
+
+Copy
+Insert
+New
+import requests
+
+proxies = {
+    'http': 'http://proxy.example.com:8080',
+    'https': 'http://proxy.example.com:8080',
+}
+
+response = requests.get('http://example.com', proxies=proxies)
+Trong đoạn mã trên, yêu cầu GET đến http://example.com sẽ được gửi thông qua máy chủ proxy tại địa chỉ http://proxy.example.com:8080.

@@ -1,0 +1,16 @@
+
+
+Khi định nghĩa một hàm trong Python, các tham số có thể được truyền vào theo hai cách là positional và keyword.
+
+Tham số positional: Là các tham số được xác định dựa trên vị trí của chúng trong danh sách tham số. Giá trị của tham số được truyền tương ứng với vị trí đầu tiên sẽ được gán cho tham số đầu tiên trong danh sách tham số. Đây là cách truyền tham số phổ biến nhất trong Python.
+
+Tham số keyword: Là các tham số được xác định dựa trên tên của chúng. Khi tham số được truyền vào hàm, giá trị của nó được kèm theo tên của tham số. Cách truyền này giúp cho người dùng dễ hiểu và dễ bảo trì hơn do không quan tâm đến thứ tự các tham số.
+
+Ví dụ:
+
+
+def greeting(name, message):
+    print(f"{message}, {name}!")
+
+greeting("Alice", "Hello")  # Tham số positional
+greeting(message="Hello", name="Bob")  # Tham số keyword
