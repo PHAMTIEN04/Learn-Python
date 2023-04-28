@@ -1,0 +1,12 @@
+Để chuyển một tệp Python (.py) sang một tệp thực thi Windows (.exe), bạn có thể sử dụng một số công cụ và thủ thuật khác nhau. Dưới đây là một số cách thường được sử dụng:
+
+PyInstaller: Đây là một công cụ miễn phí và mã nguồn mở được sử dụng để chuyển đổi tệp Python thành các tệp thực thi độc lập trên nhiều nền tảng, bao gồm Windows, MacOS và Linux. Bạn có thể cài đặt PyInstaller bằng pip:
+
+ pip install pyinstaller
+
+Sau đó, bạn có thể chạy lệnh sau để chuyển đổi tệp Python thành tệp thực thi:
+
+ pyinstaller --onefile myscript.py
+
+Trong đó myscript.py là tên tệp Python của bạn.
+
