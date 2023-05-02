@@ -5,7 +5,7 @@ import requests
 import re 
 while True:
     win = Tk()
-    os.chdir(r'C:\Users\PPTha4ng\Downloads\test\Learn-Python\Tkinter\ProjectGetCoin')
+    os.chdir(r'C:\Learn Python\Tkinter\ProjectGetCoin')
 
 
     url = 'https://coinmarketcap.com/'
@@ -58,25 +58,48 @@ while True:
     Get_input.pack()
 
     def inputcoin():
-    
         if Get_input.get() == "Bitcoin" or Get_input.get() == "BTC": 
             test_btc = Label(win,text=text_btc,width=10,fg= "red",bg="#FFCCCC")
             test_btc.pack()
+    # Hủy bỏ các Label cũ
+            for widget in win.winfo_children():
+                if isinstance(widget, Label) and widget != test_btc:
+                    widget.destroy()
         elif Get_input.get() == "Houbi" or Get_input.get() == "HB" : 
             test_hb = Label(win,text=text_hb,width=10,fg= "pink",bg="#FFCCCC")
             test_hb.pack()
+    # Hủy bỏ các Label cũ
+            for widget in win.winfo_children():
+                if isinstance(widget, Label) and widget != test_hb:
+                    widget.destroy()
         elif Get_input.get() == "Apecoin" or Get_input.get() == "APE" : 
             test_ape = Label(win,text=text_ape,width=10,fg= "green",bg="#FFCCCC")
             test_ape.pack()
+    # Hủy bỏ các Label cũ
+            for widget in win.winfo_children():
+                if isinstance(widget, Label) and widget != test_ape:
+                    widget.destroy()
         elif Get_input.get() == "Aptos" or Get_input.get() == "APT" : 
             test_apt = Label(win,text=text_apt,width=10,fg= "blue",bg="#FFCCCC")
             test_apt.pack()
+    # Hủy bỏ các Label cũ
+            for widget in win.winfo_children():
+                if isinstance(widget, Label) and widget != test_apt:
+                    widget.destroy()
         elif Get_input.get() == "SingularityNET AGIX" or Get_input.get() == "AGIX" : 
             test_agix = Label(win,text=text_agix,width=10,fg= "purple",bg="#FFCCCC")
             test_agix.pack()
+    # Hủy bỏ các Label cũ
+            for widget in win.winfo_children():
+                if isinstance(widget, Label) and widget != test_agix:
+                    widget.destroy()
         else:
             test1 = Label(win,text="Error!!! Vui Long Nhap Lai",fg= "red",bg="#FFCCCC")
             test1.pack()
+    # Hủy bỏ các Label cũ
+            for widget in win.winfo_children():
+                if isinstance(widget, Label) and widget != test1:
+                    widget.destroy()
 
 
     Button1 = Button(win,text="Exit",command=exit)

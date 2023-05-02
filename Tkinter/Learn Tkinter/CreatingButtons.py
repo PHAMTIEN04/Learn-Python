@@ -22,7 +22,12 @@ win['bg'] = "#CCFFFF"
 # fg="red" là màu sắc chữ của văn bản trên nút là màu đỏ.
 # bg='#00FF00' là màu nền của nút là màu xanh lá cây.
 # Vì vậy, khi chạy đoạn mã trên, một nút bấm có văn bản "No!!! Click Me" với lề đệm lớn và màu sắc đỏ sẽ được hiển thị trong cửa sổ đồ họa và khi được click vào thì hàm myClick sẽ được gọi. Màu nền của nút là màu xanh lá cây.
+
 def myClick():
+    # x = int(input())
+    # y = int(input())
+    # test = x + y
+    mylabel = Label(win,text = "FUCK!!!!!!",fg='#00FF00',bg='#CC0000')
     mylabel = Label(win,text = "rin bede",fg='#00FF00',bg='#CC0000',width=20,height=20)
     mylabel.pack()
 
