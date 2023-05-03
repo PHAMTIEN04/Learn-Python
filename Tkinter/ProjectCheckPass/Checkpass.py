@@ -15,7 +15,7 @@ input_pass = Entry(win,border=2)
 input_pass.grid(column=1,row=1)
 
 def checkpass():
-    keyboard = "1234567890qwertyuiopasdfghjklzxcvbnm"
+    keyboard = "1234567890qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM"
     keyboard_list = list(keyboard)
     password = input_pass.get()
     guess_pass = ''
@@ -23,10 +23,12 @@ def checkpass():
         guess_pass = random.choices(keyboard_list,k=len(password))
         print(guess_pass)
         if guess_pass == list(password) :
-            print("Susscess!!!")
-            print("Password is ",end="")
+            text_pass = ''
+
             for i in guess_pass:
-                print(i,end="")
+                text_pass = text_pass + i
+            print("Susscess!!!")
+            print("Password is :'",text_pass,"'",sep="",end="")
             break
 
 
