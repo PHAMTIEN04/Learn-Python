@@ -10,4 +10,3 @@ n %= len(s)
 rotated_s = s[n:] + s[:n]
 
 print(rotated_s)
-s
