@@ -17,3 +17,6 @@ if n % 2 != 0:
     sum2 -= a[middle][middle]
 
 print(sum1 + sum2)
+
+a = 1
+print(type(a))
