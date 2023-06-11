@@ -5,7 +5,7 @@ import requests
 import re 
 while True:
     win = Tk()
-    os.chdir(r'C:\Learn Python\Tkinter\ProjectGetCoin')
+    os.chdir(r'D:\Learn Python\Tkinter\ProjectGetCoin')
 
 
     url = 'https://coinmarketcap.com/'
@@ -44,7 +44,7 @@ while True:
     text_hb = kq_hb.group(1)
     text_ape = kq_ape.group(1)
     text_apt = kq_apt.group(1)
-    text_agix = kq_agix.group(1)
+    # text_agix = kq_agix.group(1)
 # print(text_btc)
 
 
