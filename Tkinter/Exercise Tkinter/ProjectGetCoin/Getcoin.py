@@ -5,7 +5,7 @@ import requests
 import re 
 while True:
     win = Tk()
-    os.chdir(r'D:\Learn Python\Tkinter\ProjectGetCoin')
+
 
 
     url = 'https://coinmarketcap.com/'
