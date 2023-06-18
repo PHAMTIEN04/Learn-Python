@@ -25,7 +25,9 @@ def click_run():
             i = 4
         else:
             i = i - 1 
+
         name_label.config(text=name_labels[i])
+        count_label.config(text="Image "+str(i+1)+ " of "+str(len(name_labels)))
         update_image()
 
     def button_af():
@@ -36,6 +38,7 @@ def click_run():
         else:
             i = i + 1
         name_label.config(text=name_labels[i])
+        count_label.config(text="Image "+str(i+1)+ " of "+str(len(name_labels)))
         update_image()
 
     def start_slideshow():
@@ -59,7 +62,7 @@ def click_run():
     win = Tk()
     win.iconbitmap("D:/Learn Python/Tkinter/Learn Tkinter/Favicon/favicon.ico")
     win.geometry("1000x750")
-    win.title("View APP Basic")
+    win.title("View APP Basic LOL")
     win["bg"] = "#DDDDDD"
     # Configuration variables
     i = 0  # Current image index
@@ -102,7 +105,7 @@ def click_run():
     button_stop.grid(column=7, row=2)
 
     # Exit button
-    button_exit = Button(win, text="Exit", bg="red", fg="white", border=2,width=10, height=3, command=win.quit)
+    button_exit = Button(win, text="Exit", bg="red", fg="white", border=2,width=10, height=3, command=exit)
     button_exit.grid(column=5, row=3)
 
     # Name label
@@ -110,6 +113,17 @@ def click_run():
     name_label = Label(win, text=name_labels[i], width=20, height=3, fg="#DD0000", border=20,font=20)
     name_label.grid(column=5, row=2)
 
+    # Count Image
+    count_label = Label(win,text="Image "+str(i+1)+ " of "+str(len(name_labels)),bd=1,relief=SUNKEN)
+    # count_label = Label(win,text="Image "+str(i+1)+ " of "+str(len(name_labels)),bd=1,relief=SUNKEN,anchor=E)
+    # count_label.grid(column=0,row=4,columnspan=10,sticky=W+E,padx=30)
+    # relief=SUNKEN sets the visibility of the border to "SUNKEN", which means hide inside the label.
+    # anchor=E sets the anchor position of the text in the label to East.
+    
+    # sticky=W+E sets the sticky label to the West (West) and East (East) of its grid cell. This helps the label to expand horizontally when the window is expanded or minimized.
+    # count_label.grid(column=0, row=4, columnspan=10, sticky=W+E, padx=30)
+    count_label.grid(column=9,row=4,columnspan=10,padx=30)
+    
     win.mainloop()
 
 # Root window
