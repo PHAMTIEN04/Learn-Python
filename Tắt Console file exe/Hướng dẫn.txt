@@ -1,0 +1,17 @@
+Dưới đây là các bước để thiết lập chế độ "windowed" trong file .spec và tạo file exe:
+
+1. Mở file .spec bằng trình soạn thảo văn bản.
+
+2. Tìm dòng 'console=True' và thay đổi giá trị của nó thành 'console=False' để thiết lập chế độ "windowed".
+
+3. Lưu và đóng file .spec.
+
+4. Trong Command Prompt hoặc Terminal, di chuyển đến thư mục chứa file .spec.
+
+5. Chạy pyinstaller với file .spec đã chỉnh sửa:
+
+Copy code
+pyinstaller your_script.spec
+Trong đó, your_script.spec là tên của file .spec đã được chỉnh sửa.
+
+Sau khi hoàn thành, pyinstaller sẽ tạo ra một file exe mới trong thư mục "dist" mà không hiển thị cửa sổ terminal khi chạy. Bạn có thể chạy file exe này mà không cần hiển thị terminal.

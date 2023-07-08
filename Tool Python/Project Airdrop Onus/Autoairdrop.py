@@ -43,7 +43,7 @@ email_address = email_element.get_attribute("value")
 print(email_address)
 
 # Register on signup.goonus.io
-driver1.get("https://signup.goonus.io/")
+driver1.get("https://signup.goonus.io/6277729712534476702")
 account_reg = driver1.find_element(By.NAME, 'account_reg')
 
 # Generate a random password
