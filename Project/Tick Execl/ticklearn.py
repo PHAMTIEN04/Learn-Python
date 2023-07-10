@@ -18,7 +18,8 @@ def tickexecl(filename, paper_sheet, row_col, value):
 win = Tk()
 win.geometry("665x550")
 win.configure(bg="#F0F0F0")  # Set the background color of the main window
-
+win.title("Attendance for Lessons")
+win.iconbitmap("favicon.ico")
 def done():
     now = datetime.datetime.now()
     a = str(now).split("-")
