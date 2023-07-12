@@ -13,12 +13,12 @@ def tickexecl(filename, paper_sheet, row_col, value):
     workbook.close()
     workbook.save(filename=filename)
 
-worbook1 = openpyxl.load_workbook(filename=filename)
-sheet1 = worbook1["Trang_tính1"]
+worbook = openpyxl.load_workbook(filename=filename)
+sheet = worbook["Trang_tính1"]
 list_sv = ["Phạm Phước Tiến","Lê Vũ Trang","Nguyễn Thanh An"]
-check  = int(sheet1["A1"].value)
-worbook1.close()
-worbook1.save(filename=filename)
+check  = int(sheet["A1"].value)
+worbook.close()
+worbook.save(filename=filename)
 cnt = 2
 alpha = "A"
 if check < 6:
@@ -31,8 +31,22 @@ if check < 6:
         tickexecl(filename=filename,paper_sheet="Trang_tính1",row_col=alpha + str(cnt),value="✓")
         cnt = cnt+1    
 
-    worbook2 = openpyxl.load_workbook(filename=filename)
-    sheet2 = worbook2["Trang_tính1"]
-    sheet2["A1"].value = check + 1
-    worbook2.close()
-    worbook2.save(filename=filename)
+    worbook = openpyxl.load_workbook(filename=filename)
+    sheet = worbook["Trang_tính1"]
+    sheet["A1"].value = check + 1
+    worbook.close()
+    worbook.save(filename=filename)
+    
+check = str(input())
+cnt1 = 2
+while True:
+    worbook = openpyxl.load_workbook(filename=filename)
+    sheet = worbook["Trang_tính1"]
+    if sheet3["A"+str(cnt1)].value == check:
+        tickexecl(filename=filename,paper_sheet="Trang_tính1",row_col=alpha+str(cnt1),value="X")
+        break
+    cnt1 = cnt1 + 1
+    worbook3.close()
+    worbook3.save(filename=filename)
+
+
