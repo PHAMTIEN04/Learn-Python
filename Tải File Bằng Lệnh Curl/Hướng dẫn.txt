@@ -1,0 +1,23 @@
+Nếu bạn chỉ muốn tải xuống một file cụ thể từ repository, bạn có thể sử dụng curl.
+
+Cú pháp:
+
+mathematica
+Copy code
+
+curl -L -O <raw_file_url>
+
+Ví dụ, nếu bạn muốn tải xuống file có URL là https://raw.githubusercontent.com/username/repository/branch_name/path/to/file.txt, bạn thực hiện lệnh sau:
+
+ruby
+Copy code
+
+curl -L -O 
+https://raw.githubusercontent.com/username/repository/branch_name/path/to/file.txt
+
+Trong đó, branch_name là tên của branch mà bạn muốn lấy file từ đó và path/to/file.txt là đường dẫn tới file cụ thể trong repository.
+
+Chọn cách thích hợp tùy vào mục đích của bạn. Nếu bạn muốn làm việc với toàn bộ repository hoặc muốn theo dõi phiên bản của nó, hãy sử dụng git clone. Nếu bạn chỉ cần tải xuống một file cụ thể, curl có thể là lựa chọn dễ dàng hơn.
+
+# curl <url_file> -o <name_file_save>
+Ex: curl https://github/deptrai.txt -o deptrai.txt
