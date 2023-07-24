@@ -5,6 +5,7 @@ from tkinter import *
 from PIL import Image,ImageTk
 from tkinter import messagebox
 import pygame
+import threading
 
 win = Tk()
 
@@ -13,6 +14,16 @@ pygame.mixer.init()
 
 pygame.mixer.music.load("./chaomung.mp3")
 pygame.mixer.music.play(loops=1)
+
+
+def play_other_music(file_path):
+    # Phát âm thanh mới trên kênh 1 (không giới hạn lặp)
+    sound = pygame.mixer.Sound(file_path)
+    channel = pygame.mixer.Channel(1)
+    channel.play(sound,loops=-1)
+
+play_other_music("./nhacnen.mp3")
+
 
 def resize_img(path,width,height): # Function Resize Image
     img = Image.open(path)
