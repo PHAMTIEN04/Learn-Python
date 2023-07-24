@@ -4,8 +4,15 @@ from time import sleep
 from tkinter import *
 from PIL import Image,ImageTk
 from tkinter import messagebox
+import pygame
 
 win = Tk()
+
+pygame.mixer.init()
+
+
+pygame.mixer.music.load("./chaomung.mp3")
+pygame.mixer.music.play(loops=1)
 
 def resize_img(path,width,height): # Function Resize Image
     img = Image.open(path)
@@ -77,6 +84,8 @@ check_sum_money = False # Check to see if you choose the right one, and if it is
 
 tien_nai = 0
 def click_nai():
+    pygame.mixer.music.load("./clickchuot.mp3")
+    pygame.mixer.music.play(loops=1)
     # Check if the money calculation has been performed
     if money_calculated == True:
         global check
@@ -104,6 +113,8 @@ def click_nai():
                 tien_nai = tien_nai + check_money
                 sum_money = sum_money - check_money
             else:
+                pygame.mixer.music.load("./canhbao2.mp3")
+                pygame.mixer.music.play(loops=1)
                 messagebox.showwarning("Cảnh báo","Số dư không đủ..Vui lòng nạp tiền !")
             win.update()
         if check_money == 100000 :
@@ -116,6 +127,8 @@ def click_nai():
                 tien_nai = tien_nai + check_money
                 sum_money = sum_money - check_money
             else:
+                pygame.mixer.music.load("./canhbao2.mp3")
+                pygame.mixer.music.play(loops=1)
                 messagebox.showwarning("Cảnh báo","Số dư không đủ..Vui lòng nạp tiền !")
         win.update()
         if check_money == 500000 :
@@ -128,13 +141,19 @@ def click_nai():
                 tien_nai = tien_nai + check_money
                 sum_money = sum_money - check_money
             else:
+                pygame.mixer.music.load("./canhbao2.mp3")
+                pygame.mixer.music.play(loops=1)
                 messagebox.showwarning("Cảnh báo","Số dư không đủ..Vui lòng nạp tiền !")
             win.update()
         check_money = 0
     else:
-        messagebox.showwarning("Cảnh báo","Vui chọn bắt đầu trước khi đặt cược !!!",icon = messagebox.WARNING)
+        pygame.mixer.music.load("./canhbao1.mp3")
+        pygame.mixer.music.play(loops=1)
+        messagebox.showwarning("Cảnh báo","Vui lòng chọn bắt đầu trước khi đặt cược !!!",icon = messagebox.WARNING)
 tien_bau = 0
 def click_bau():
+    pygame.mixer.music.load("./clickchuot.mp3")
+    pygame.mixer.music.play(loops=1)
     # Check if the money calculation has been performed
     if money_calculated == True:
         global check
@@ -161,6 +180,8 @@ def click_bau():
                 tien_bau = tien_bau + check_money
                 sum_money = sum_money - check_money
             else:
+                pygame.mixer.music.load("./canhbao2.mp3")
+                pygame.mixer.music.play(loops=1)
                 messagebox.showwarning("Cảnh báo","Số dư không đủ..Vui lòng nạp tiền !")
             win.update()
         if check_money == 100000 :
@@ -173,6 +194,8 @@ def click_bau():
                 tien_bau = tien_bau + check_money
                 sum_money = sum_money - check_money
             else:
+                pygame.mixer.music.load("./canhbao2.mp3")
+                pygame.mixer.music.play(loops=1)
                 messagebox.showwarning("Cảnh báo","Số dư không đủ..Vui lòng nạp tiền !")
             win.update()
         if check_money == 500000 :
@@ -185,13 +208,19 @@ def click_bau():
                 tien_bau = tien_bau + check_money
                 sum_money = sum_money - check_money
             else:
+                pygame.mixer.music.load("./canhbao2.mp3")
+                pygame.mixer.music.play(loops=1)
                 messagebox.showwarning("Cảnh báo","Số dư không đủ..Vui lòng nạp tiền !")
             win.update()
         check_money = 0
     else:
-        messagebox.showwarning("Cảnh báo","Vui chọn bắt đầu trước khi đặt cược !!!",icon = messagebox.WARNING)
+        pygame.mixer.music.load("./canhbao1.mp3")
+        pygame.mixer.music.play(loops=1)
+        messagebox.showwarning("Cảnh báo","Vui lòng chọn bắt đầu trước khi đặt cược !!!",icon = messagebox.WARNING)
 tien_ga = 0
 def click_ga():
+    pygame.mixer.music.load("./clickchuot.mp3")
+    pygame.mixer.music.play(loops=1)
     # Check if the money calculation has been performed
     if money_calculated == True:
         global check
@@ -218,6 +247,8 @@ def click_ga():
                 tien_ga = tien_ga + check_money
                 sum_money = sum_money - check_money
             else:
+                pygame.mixer.music.load("./canhbao2.mp3")
+                pygame.mixer.music.play(loops=1)
                 messagebox.showwarning("Cảnh báo","Số dư không đủ..Vui lòng nạp tiền !")
             win.update()
         if check_money == 100000 :
@@ -230,6 +261,8 @@ def click_ga():
                 tien_ga = tien_ga + check_money
                 sum_money = sum_money - check_money
             else:
+                pygame.mixer.music.load("./canhbao2.mp3")
+                pygame.mixer.music.play(loops=1)
                 messagebox.showwarning("Cảnh báo","Số dư không đủ..Vui lòng nạp tiền !")
             win.update()
         if check_money == 500000 :
@@ -242,13 +275,19 @@ def click_ga():
                 tien_ga = tien_ga + check_money
                 sum_money = sum_money - check_money
             else:
+                pygame.mixer.music.load("./canhbao2.mp3")
+                pygame.mixer.music.play(loops=1)
                 messagebox.showwarning("Cảnh báo","Số dư không đủ..Vui lòng nạp tiền !")
             win.update()
         check_money = 0
     else:
-        messagebox.showwarning("Cảnh báo","Vui chọn bắt đầu trước khi đặt cược !!!",icon = messagebox.WARNING)
+        pygame.mixer.music.load("./canhbao1.mp3")
+        pygame.mixer.music.play(loops=1)
+        messagebox.showwarning("Cảnh báo","Vui lòng chọn bắt đầu trước khi đặt cược !!!",icon = messagebox.WARNING)
 tien_ca = 0
 def click_ca():
+    pygame.mixer.music.load("./clickchuot.mp3")
+    pygame.mixer.music.play(loops=1)
     # Check if the money calculation has been performed
     if money_calculated == True:
         global check
@@ -275,6 +314,8 @@ def click_ca():
                 tien_ca = tien_ca + check_money
                 sum_money = sum_money - check_money
             else:
+                pygame.mixer.music.load("./canhbao2.mp3")
+                pygame.mixer.music.play(loops=1)
                 messagebox.showwarning("Cảnh báo","Số dư không đủ..Vui lòng nạp tiền !")
             win.update()
         if check_money == 100000 :
@@ -287,6 +328,8 @@ def click_ca():
                 tien_ca = tien_ca + check_money
                 sum_money = sum_money - check_money
             else:
+                pygame.mixer.music.load("./canhbao2.mp3")
+                pygame.mixer.music.play(loops=1)
                 messagebox.showwarning("Cảnh báo","Số dư không đủ..Vui lòng nạp tiền !")
             win.update()
         if check_money == 500000 :
@@ -299,13 +342,19 @@ def click_ca():
                 tien_ca = tien_ca + check_money
                 sum_money = sum_money - check_money
             else:
-                    messagebox.showwarning("Cảnh báo","Số dư không đủ..Vui lòng nạp tiền !")   
+                pygame.mixer.music.load("./canhbao2.mp3")
+                pygame.mixer.music.play(loops=1)
+                messagebox.showwarning("Cảnh báo","Số dư không đủ..Vui lòng nạp tiền !")   
             win.update()
         check_money = 0
-    else:
-        messagebox.showwarning("Cảnh báo","Vui chọn bắt đầu trước khi đặt cược !!!",icon = messagebox.WARNING)
+    else: 
+        pygame.mixer.music.load("./canhbao1.mp3")
+        pygame.mixer.music.play(loops=1)
+        messagebox.showwarning("Cảnh báo","Vui lòng chọn bắt đầu trước khi đặt cược !!!",icon = messagebox.WARNING)
 tien_cua = 0
 def click_cua():
+    pygame.mixer.music.load("./clickchuot.mp3")
+    pygame.mixer.music.play(loops=1)
     # Check if the money calculation has been performed
     if money_calculated == True:
         global check
@@ -332,6 +381,8 @@ def click_cua():
                 tien_cua = tien_cua + check_money
                 sum_money = sum_money - check_money
             else:
+                pygame.mixer.music.load("./canhbao2.mp3")
+                pygame.mixer.music.play(loops=1)
                 messagebox.showwarning("Cảnh báo","Số dư không đủ..Vui lòng nạp tiền !")   
             win.update()
         if check_money == 100000 :
@@ -344,6 +395,8 @@ def click_cua():
                 tien_cua = tien_cua + check_money
                 sum_money = sum_money - check_money
             else:
+                pygame.mixer.music.load("./canhbao2.mp3")
+                pygame.mixer.music.play(loops=1)
                 messagebox.showwarning("Cảnh báo","Số dư không đủ..Vui lòng nạp tiền !")   
             win.update()
         if check_money == 500000 :
@@ -356,13 +409,19 @@ def click_cua():
                 tien_cua = tien_cua + check_money
                 sum_money = sum_money - check_money
             else:
+                pygame.mixer.music.load("./canhbao2.mp3")
+                pygame.mixer.music.play(loops=1)
                 messagebox.showwarning("Cảnh báo","Số dư không đủ..Vui lòng nạp tiền !")   
             win.update()
         check_money = 0
     else:
-        messagebox.showwarning("Cảnh báo","Vui chọn bắt đầu trước khi đặt cược !!!",icon = messagebox.WARNING)
+        pygame.mixer.music.load("./canhbao1.mp3")
+        pygame.mixer.music.play(loops=1)
+        messagebox.showwarning("Cảnh báo","Vui lòng chọn bắt đầu trước khi đặt cược !!!",icon = messagebox.WARNING)
 tien_tom = 0
 def click_tom():
+    pygame.mixer.music.load("./clickchuot.mp3")
+    pygame.mixer.music.play(loops=1)
     # Check if the money calculation has been performed
     if money_calculated == True:
         global check
@@ -388,6 +447,8 @@ def click_tom():
                 tien_tom = tien_tom + check_money
                 sum_money = sum_money - check_money
             else:
+                pygame.mixer.music.load("./canhbao2.mp3")
+                pygame.mixer.music.play(loops=1)
                 messagebox.showwarning("Cảnh báo","Số dư không đủ..Vui lòng nạp tiền !")
             win.update()
         if check_money == 100000 :
@@ -400,6 +461,8 @@ def click_tom():
                 tien_tom = tien_tom + check_money
                 sum_money = sum_money - check_money
             else:
+                pygame.mixer.music.load("./canhbao2.mp3")
+                pygame.mixer.music.play(loops=1)
                 messagebox.showwarning("Cảnh báo","Số dư không đủ..Vui lòng nạp tiền !")
             win.update()
         if check_money == 500000 :
@@ -412,22 +475,33 @@ def click_tom():
                 tien_tom = tien_tom + check_money
                 sum_money = sum_money - check_money
             else:
+                pygame.mixer.music.load("./canhbao2.mp3")
+                pygame.mixer.music.play(loops=1)
                 messagebox.showwarning("Cảnh báo","Số dư không đủ..Vui lòng nạp tiền !")
+                
             win.update()
         check_money = 0
     else:
 
-        messagebox.showwarning("Cảnh báo","Vui chọn bắt đầu trước khi đặt cược !!!",icon = messagebox.WARNING)
+        pygame.mixer.music.load("./canhbao1.mp3")
+        pygame.mixer.music.play(loops=1)
+        messagebox.showwarning("Cảnh báo","Vui lòng chọn bắt đầu trước khi đặt cược !!!",icon = messagebox.WARNING)
 
 def click_50k(): # Function money 50k
+    pygame.mixer.music.load("./clickchuot.mp3")
+    pygame.mixer.music.play(loops=1)
     global check_money 
     check_money = 50000
     
 def click_100k(): # Function money 100k
+    pygame.mixer.music.load("./clickchuot.mp3")
+    pygame.mixer.music.play(loops=1)
     global check_money 
     check_money = 100000
 
 def click_500k(): # Function money 500k
+    pygame.mixer.music.load("./clickchuot.mp3")
+    pygame.mixer.music.play(loops=1)
     global check_money 
     check_money = 500000
 
@@ -711,6 +785,7 @@ def update_rand(label1,label2,label3):
     
 check_bd = False # Check that every time you play, you must press the start button to play
 def run():
+
     global money_calculated
     global sum_money
     global check_bd
@@ -718,7 +793,9 @@ def run():
     # Check if money is already calculated
     if money_calculated == True:
         global list_n
-        # Update the dice images
+        # Update the dice images    
+        pygame.mixer.music.load("./xucxacsound.mp3")
+        pygame.mixer.music.play(loops=0)
         update_rand(lb_1, lb_2, lb_3)
         
         # Remove widgets (animal bets) that are not checked
@@ -748,6 +825,8 @@ def run():
         messagebox.showwarning("Cảnh Báo", "Vui lòng bắt đầu trước khi đặt cược!!!", icon=messagebox.WARNING)
     
 def batdau(): # Function start
+    pygame.mixer.music.load("./clickchuot.mp3")
+    pygame.mixer.music.play(loops=1)
     global check_bd 
     if check_bd == False:
         global money_calculated
@@ -768,19 +847,25 @@ def batdau(): # Function start
         check_bd = True
 
 def naptien(): #Deposit function
+    pygame.mixer.music.load("./clickchuot.mp3")
+    pygame.mixer.music.play(loops=1)
     global wnt
     global e_nt
     wnt = Toplevel() # New win deposit
     wnt["bg"] = "red"
-    wnt.geometry("200x70")
-    lb_nt = Label(wnt,text="Nhập số tiền cần nạp",bg="red") # label 
+    wnt.title("Nạp Tiền")
+    wnt.geometry("220x70")
+    wnt.iconbitmap("./iconmoney.ico")
+    lb_nt = Label(wnt,text="Nhập số tiền cần nạp",bg="red",font=("Arial", 10, "bold")) # label 
     lb_nt.grid(column=0,row=0)
-    e_nt = Entry(wnt,border=5) # Amount input 
+    e_nt = Entry(wnt,border=5,width=25) # Amount input 
     e_nt.grid(column=0,row=1,padx=5)
     nt_click = Button(wnt,text="Nạp",command=v_t) # finish button
     nt_click.grid(column=1,row=1)
 
 def v_t(): #balance function
+    pygame.mixer.music.load("./clickchuot.mp3")
+    pygame.mixer.music.play(loops=1)
     global sodu
     sodu = sodu + int(e_nt.get())
     l_sodu.config(text=f"Số dư : {sodu} vnđ")
