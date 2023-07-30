@@ -69,13 +69,13 @@ def showdata():
 
     # Create a label to display the format of the data
     Format_l = Label(win,text="F_Name|L_Name|Address|City|State|Zipcode")
-    Format_l.grid(column=1,row=8,sticky="E")
+    Format_l.grid(column=1,row=8,sticky="W")
     
     # Loop through the fetched data and create labels to display it on the UI
     for i in range(len(res)):
         result_text = f"{res[i][0]} | {res[i][1]} | {res[i][2]} | {res[i][3]} | {res[i][4]} | {res[i][5]}"
         res_label = Label(win,text=result_text)
-        res_label.grid(column=1,row=9+i,sticky="E")
+        res_label.grid(column=1,row=9+i,sticky="W")
         
     # Print the fetched data to the console
     print(res)

