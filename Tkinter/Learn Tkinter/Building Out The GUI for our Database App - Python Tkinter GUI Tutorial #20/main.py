@@ -58,19 +58,30 @@ def adddata():
     state_e.delete(0,END)
     zipcode_e.delete(0,END)
     
+check_d_a = False
 check_d = False
 res_labels = []
+r = 0
+res = ""
 def showdata():
 
     global check_d
     global res_labels
     global res
+    global check_asc
+    global check_dec
+    r = len(res)
     # Connect to the database
     conn = sqlite3.connect("address_book.db")
     c = conn.cursor()
     
     # Fetch all data from the 'addresses' table
-    c.execute("SELECT * FROM addresses")
+    if check_asc == True:
+        c.execute("SELECT * FROM addresses ORDER BY stt ASC")
+    elif check_dec == True:
+        c.execute("SELECT * FROM addresses ORDER BY stt DESC")
+    else:
+        c.execute("SELECT * FROM addresses")
     res = c.fetchall()
     
     # Commit the changes and close the connection
@@ -93,13 +104,22 @@ def showdata():
         res_label.grid(column=0,row=1,sticky="W")
         check_d == False
         
+    global check_d_a
+    if check_d_a == True:
+        for i in range(r):
+            res_label = Label(f,text=" ",width=70)
+            res_label.grid(column=0,row=1+i,sticky="W")
+        check_d_a = False
+        
     # Print the fetched data to the console
     print(res)
     print(len(res))
 
 
+
 def delete():
     global check_d
+    global res
     check_d = True
     conn = sqlite3.connect("address_book.db")
     c = conn.cursor()
@@ -123,16 +143,52 @@ def delete():
 
     # Clear the Entry field after deleting data
     dele_e.delete(0, END)
+    for i in range(len(res)):
+        res_label = Label(f,text=" ",width=70)
+        res_label.grid(column=0,row=1+i,sticky="W")
+    showdata()
 
 
     
 def deleteall():
+    global res
+    global check_d_a
+    check_d_a = True
     conn = sqlite3.connect("address_book.db")
     c = conn.cursor()
     c.execute("DELETE FROM addresses")
     
     conn.commit()
     conn.close()
+    for i in range(len(res)):
+        res_label = Label(f,text=" ",width=70)
+        res_label.grid(column=0,row=1+i,sticky="W")
+    showdata()
+
+check_asc = False
+def ascdt():
+    global check_asc
+    global check_dec
+    global res
+    check_dec = False
+    check_asc = True
+    for i in range(len(res)):
+        res_label = Label(f,text=" ",width=70)
+        res_label.grid(column=0,row=1+i,sticky="W")
+    showdata()
+check_dec = False
+def decdt():
+    global check_dec
+    global check_asc
+    global res
+    check_dec = True
+    check_asc = False
+    for i in range(len(res)):
+        res_label = Label(f,text=" ",width=70)
+        res_label.grid(column=0,row=1+i,sticky="W")
+    showdata()
+
+
     
     
 add_label = Label(win,text="ADD DATA",fg="green")
@@ -203,6 +259,19 @@ f.grid_propagate(False)
 
 Format_l = Label(f,text="STT|F_Name|L_Name|Address|City|State|Zipcode")
 Format_l.grid(column=0,row=0,sticky="W")
+
+asc_lb = Label(win,text="ASCENDING",fg="green")
+asc_lb.grid(column=2,row=2)
+
+asc_bt = Button(win,text="ASC",command=ascdt)
+asc_bt.grid(column=2,row=3,pady=5)
+
+dec_lb = Label(win,text="DECREASE",fg="green")
+dec_lb.grid(column=2,row=4)
+
+dec_bt = Button(win,text="DEC",command=decdt)
+dec_bt.grid(column=2,row=5,pady=5)
+
 
 win.mainloop()
 
