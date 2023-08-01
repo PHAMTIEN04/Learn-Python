@@ -1,6 +1,0 @@
-Tkinter là một thư viện đồ họa (GUI) phổ biến được tích hợp sẵn trong Python. Nó cho phép người dùng tạo ra các ứng dụng desktop với giao diện đồ họa một cách dễ dàng và nhanh chóng.
-
-Thư viện Tkinter được xây dựng trên nền tảng Tk (ToolKit), một thư viện đồ họa miễn phí và mã nguồn mở. Các widget của Tkinter bao gồm các thành phần như buttons, labels, textboxes, checkboxes, radio buttons, canvases, menus,... giúp tạo nên giao diện cho ứng dụng.
-
-Để sử dụng Tkinter, bạn cần import Tkinter vào chương trình Python của mình. Sau đó, bạn có thể tạo các widget và gán chúng vào một cửa sổ để hiển thị.
-

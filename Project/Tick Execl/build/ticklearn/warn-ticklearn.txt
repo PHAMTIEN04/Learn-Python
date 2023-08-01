@@ -195,6 +195,6 @@ missing module named cPickle - imported by pycparser.ply.yacc (delayed, optional
 missing module named cffi._pycparser - imported by cffi (optional), cffi.cparser (optional)
 missing module named 'defusedxml.ElementTree' - imported by openpyxl.xml.functions (conditional), PIL.Image (optional)
 missing module named 'lxml.etree' - imported by openpyxl.xml.functions (conditional)
-missing module named tests - imported by openpyxl.reader.excel (optional)
+missing module named tests.KEEP_VBA - imported by tests (optional), openpyxl.reader.excel (optional)
 missing module named defusedxml - imported by openpyxl.xml (delayed, optional)
 missing module named lxml - imported by openpyxl.xml (delayed, optional)

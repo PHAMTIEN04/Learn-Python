@@ -1,0 +1,21 @@
+tkinter là một thư viện trong Python cho phép tạo giao diện đồ họa người dùng (GUI). Các thành phần trong tkinter được xây dựng dựa trên API của Tcl/Tk, một công cụ phổ biến để tạo GUI trên các nền tảng khác nhau bao gồm Linux, Windows và Mac OS.
+
+Có rất nhiều chức năng trong tkinter, nhưng những chức năng chính bao gồm:
+
+Tạo các widget (khung, nút, văn bản, menu, hộp thoại...)
+Quản lý các sự kiện của widget (chẳng hạn như sự kiện nhấn chuột hoặc bàn phím)
+Tùy chỉnh thiết kế và hành vi của widget
+Thực hiện các hoạt động I/O (như đọc hoặc ghi file) thông qua các widget như hộp thoại mở/đóng
+Để tạo một giao diện người dùng đơn giản bằng tkinter, ta cần import thư viện và tạo ra một cửa sổ:
+
+
+from tkinter import *
+
+# Tạo một cửa sổ mới
+root = Tk()
+
+# Thêm các thành phần vào cửa sổ ở đây
+
+# Hiển thị cửa sổ
+root.mainloop()
+Sau khi tạo cửa sổ, ta có thể thêm các thành phần khác như các nút, hộp văn bản, hộp thoại, và quản lý các sự kiện của chúng.
