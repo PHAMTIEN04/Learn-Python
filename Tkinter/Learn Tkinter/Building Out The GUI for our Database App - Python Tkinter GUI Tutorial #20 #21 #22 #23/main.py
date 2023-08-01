@@ -194,6 +194,96 @@ def selectdata():
     showdata()
     selec_e.delete(0,END)
 
+# Function to open a new window for data update
+def edit():
+    global stt_e_u,first_name_e_u,last_name_e_u,address_e_u,city_e_u,state_e_u,zipcode_e_u
+    
+    win1 = Tk()
+    win1.title("UPDATE DATA")
+    win1.geometry("450x300")
+    stt_l_u = Label(win1,text="STT",font=("Arial",12))
+    stt_l_u.grid(column=0,row=0)
+    stt_e_u = Entry(win1,width=50,border=3)
+    stt_e_u.grid(column=1,row=0,pady=5)
+
+    first_name_l_u = Label(win1,text="First Name",font = ("Arial", 12))
+    first_name_l_u.grid(column=0 ,row=1,padx=20)
+    first_name_e_u = Entry(win1,width=50,border=3)
+    first_name_e_u.grid(column=1, row=1,pady=5)
+
+    last_name_l_u = Label(win1,text="Last Name",font = ("Arial", 12))
+    last_name_l_u.grid(column=0,row=2)
+    last_name_e_u = Entry(win1,width=50,border=3)
+    last_name_e_u.grid(column=1,row=2,pady=5)
+
+    address_l_u = Label(win1,text="Address",font = ("Arial", 12))
+    address_l_u.grid(column=0,row=3)
+    address_e_u = Entry(win1,width=50,border=3)
+    address_e_u.grid(column=1,row=3,pady=5)
+
+    city_l_u = Label(win1,text="City",font = ("Arial", 12))
+    city_l_u.grid(column=0,row=4)
+    city_e_u = Entry(win1,width=50,border=3)
+    city_e_u.grid(column=1,row=4,pady=5)
+
+    state_l_u = Label(win1,text="State",font = ("Arial", 12))
+    state_l_u.grid(column=0,row=5)
+    state_e_u = Entry(win1,width=50,border=3)
+    state_e_u.grid(column=1,row=5,pady=5)
+
+    zipcode_l_u = Label(win1,text="Zipcode",font = ("Arial", 12))
+    zipcode_l_u.grid(column=0,row=6)
+    zipcode_e_u = Entry(win1,width=50,border=3)
+    zipcode_e_u.grid(column=1,row=6,pady=5)
+
+    update_data = Button(win1,text="Confirm data update",command=updatedata)
+    update_data.grid(column=1,row=7,sticky="E",pady=5)
+    
+    
+    
+    
+    win1.mainloop()
+
+# Function to update data in the database
+def updatedata():
+    global stt_e_u,first_name_e_u,last_name_e_u,address_e_u,city_e_u,state_e_u,zipcode_e_u
+    conn = sqlite3.connect("address_book.db")
+    c = conn.cursor()
+    c.execute("""UPDATE addresses SET
+                stt = :stt,
+                first_name = :f_name,
+                last_name = :l_name,
+                address = :address,
+                city = :city,
+                state = :state,
+                zipcode = :zipcode
+
+                WHERE stt = :stt
+        """,
+        {
+                'stt' : stt_e_u.get(),
+                'f_name' : first_name_e_u.get(),
+                'l_name' : last_name_e_u.get(),
+                'address' : address_e_u.get(),
+                'city' : city_e_u.get(),
+                'state' : state_e_u.get(),
+                'zipcode' : zipcode_e_u.get()  
+        }
+        )
+
+
+    conn.commit()
+    conn.close()
+
+    stt_e_u.delete(0, END)
+    first_name_e_u.delete(0, END)
+    last_name_e_u.delete(0, END)
+    address_e_u.delete(0, END)
+    city_e_u.delete(0, END)
+    state_e_u.delete(0, END)
+    zipcode_e_u.delete(0, END)
+
+
 # GUI elements and layout
 add_label = Label(win,text="ADD DATA",fg="green")
 add_label.grid(column=0,row=0,sticky="S")
@@ -278,14 +368,20 @@ Format_l.grid(column=0,row=0,sticky="W")
 asc_lb = Label(win,text="ASCENDING",fg="green")
 asc_lb.grid(column=2,row=2)
 
-asc_bt = Button(win,text="ASC",command=ascdt)
+asc_bt = Button(win,text="Asc",command=ascdt)
 asc_bt.grid(column=2,row=3,pady=5)
 
 dec_lb = Label(win,text="DECREASE",fg="green")
 dec_lb.grid(column=2,row=4)
 
-dec_bt = Button(win,text="DEC",command=decdt)
+dec_bt = Button(win,text="Desc",command=decdt)
 dec_bt.grid(column=2,row=5,pady=5)
+
+up_lb = Label(win,text="UPDATE Data",fg="green")
+up_lb.grid(column=2,row=6)
+
+up_bt = Button(win,text="Update",command=edit)
+up_bt.grid(column=2,row=7,pady=5)
 
 
 win.mainloop()
@@ -294,7 +390,26 @@ win.mainloop()
 # conn = sqlite3.connect("address_book.db")
 # c = conn.cursor()
 
-# c.execute("DELETE FROM addresses")
+# c.execute("""UPDATE addresses SET
+#             stt = :stt,
+#             first_name = :f_name,
+#             last_name = :l_name,
+#             address = :address,
+#             city = :city,
+#             state = :state,
+#             zipcode = :zipcode
+            
+#             WHERE stt = :stt
+#             """,
+#             {
+#             'stt': 3,
+#             'f_name': "Deptrai" ,
+#             'l_name': "Ga",
+#             'address':  "aaa",
+#             'city': "aaa",
+#             'state':    "AAa",
+#             'zipcode':   32
+#             })
 # c.execute("SELECT * FROM addresses")
 # res = c.fetchall()
 # print(res)
