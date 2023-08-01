@@ -4,9 +4,7 @@ from tkinter import messagebox
 
 # Uncomment these lines if you need to create the table and initialize the database:
 # conn = sqlite3.connect("address_book.db")
-
 # c = conn.cursor()
-
 # c.execute("""CREATE TABLE addresses (
 #         stt integer,
 #         first_name text,
@@ -16,16 +14,15 @@ from tkinter import messagebox
 #         state text,
 #         zipcode integer
 #     )""")
-
-
-
-
 # conn.commit()
 # conn.close()
+
+# Create the main window for the application
 win = Tk()
 win.title("Database App")
-win.geometry("1050x390")
+win.geometry("1050x490")
 
+# Function to add data to the database
 def adddata():
     # Connect to the database
     conn = sqlite3.connect("address_book.db")
@@ -41,45 +38,54 @@ def adddata():
                   'city'   : city_e.get(),
                   'state'  : state_e.get(),
                   'zipcode': zipcode_e.get()
-                  
               })
     
     # Commit the changes and close the connection
     conn.commit()
-    
-    conn.close
+    conn.close()
 
     # Clear entry fields after adding data
-    stt_e.delete(0,END)
-    first_name_e.delete(0,END)
-    last_name_e.delete(0,END)
-    address_e.delete(0,END)
-    city_e.delete(0,END)
-    state_e.delete(0,END)
-    zipcode_e.delete(0,END)
-    
+    stt_e.delete(0, END)
+    first_name_e.delete(0, END)
+    last_name_e.delete(0, END)
+    address_e.delete(0, END)
+    city_e.delete(0, END)
+    state_e.delete(0, END)
+    zipcode_e.delete(0, END)
+
+# Global variables used for sorting and displaying data
 check_d_a = False
 check_d = False
 res_labels = []
 r = 0
 res = ""
-def showdata():
 
+# Function to display data in the UI
+def showdata():
     global check_d
     global res_labels
     global res
     global check_asc
     global check_dec
+    global check_select
     r = len(res)
+    
+    # Clear existing result labels in the UI
+    for i in range(len(res)):
+        res_label = Label(f, text=" ", width=70)
+        res_label.grid(column=0, row=1+i, sticky="W")
+        
     # Connect to the database
     conn = sqlite3.connect("address_book.db")
     c = conn.cursor()
     
-    # Fetch all data from the 'addresses' table
+    # Fetch all data from the 'addresses' table based on sorting options
     if check_asc == True:
         c.execute("SELECT * FROM addresses ORDER BY stt ASC")
     elif check_dec == True:
         c.execute("SELECT * FROM addresses ORDER BY stt DESC")
+    elif check_select == True:
+        c.execute(f"SELECT * FROM addresses WHERE stt = {selec_e.get()}")
     else:
         c.execute("SELECT * FROM addresses")
     res = c.fetchall()
@@ -87,36 +93,34 @@ def showdata():
     # Commit the changes and close the connection
     conn.commit()
     conn.close()
-    
-    # Create a label to display the format of the data
-    
+
     # Loop through the fetched data and create labels to display it on the UI
     for i in range(len(res)):
-        result_text = f"{res[i][0]} | {res[i][1]} | {res[i][2]} | {res[i][3]} | {res[i][4]} | {res[i][5]}"
-        res_label = Label(f,text=result_text)
-        res_label.grid(column=0,row=1+i,sticky="W")
+        result_text = f"{res[i][0]} | {res[i][1]} | {res[i][2]} | {res[i][3]} | {res[i][4]} | {res[i][5]} | {res[i][6]}"
+        res_label = Label(f, text=result_text)
+        res_label.grid(column=0, row=1+i, sticky="W")
         if i+1 == len(res) and check_d == True:
-            res_label = Label(f,text=" ",width=70)
-            res_label.grid(column=0,row=2+i,sticky="W")
+            res_label = Label(f, text=" ", width=70)
+            res_label.grid(column=0, row=2+i, sticky="W")
 
+    # Display a message if there is no data to show
     if len(res) == 0:
-        res_label = Label(f,text=" ",width=70)
-        res_label.grid(column=0,row=1,sticky="W")
-        check_d == False
+        res_label = Label(f, text=" ", width=70)
+        res_label.grid(column=0, row=1, sticky="W")
+        check_d = False
         
     global check_d_a
     if check_d_a == True:
         for i in range(r):
-            res_label = Label(f,text=" ",width=70)
-            res_label.grid(column=0,row=1+i,sticky="W")
+            res_label = Label(f, text=" ", width=70)
+            res_label.grid(column=0, row=1+i, sticky="W")
         check_d_a = False
-        
+
     # Print the fetched data to the console
     print(res)
     print(len(res))
 
-
-
+# Function to delete data from the database based on STT
 def delete():
     global check_d
     global res
@@ -139,17 +143,11 @@ def delete():
     conn.commit()
     conn.close()
 
-    
-
     # Clear the Entry field after deleting data
     dele_e.delete(0, END)
-    for i in range(len(res)):
-        res_label = Label(f,text=" ",width=70)
-        res_label.grid(column=0,row=1+i,sticky="W")
     showdata()
 
-
-    
+# Function to delete all data from the database
 def deleteall():
     global res
     global check_d_a
@@ -160,37 +158,43 @@ def deleteall():
     
     conn.commit()
     conn.close()
-    for i in range(len(res)):
-        res_label = Label(f,text=" ",width=70)
-        res_label.grid(column=0,row=1+i,sticky="W")
     showdata()
 
+# Function to sort data in ascending order based on STT
 check_asc = False
 def ascdt():
     global check_asc
     global check_dec
-    global res
+    global check_select
+    check_select = False
     check_dec = False
     check_asc = True
-    for i in range(len(res)):
-        res_label = Label(f,text=" ",width=70)
-        res_label.grid(column=0,row=1+i,sticky="W")
     showdata()
+
+# Function to sort data in descending order based on STT
 check_dec = False
 def decdt():
     global check_dec
     global check_asc
-    global res
+    global check_select
     check_dec = True
     check_asc = False
-    for i in range(len(res)):
-        res_label = Label(f,text=" ",width=70)
-        res_label.grid(column=0,row=1+i,sticky="W")
+    check_select = False
     showdata()
 
+# Function to select data based on a specific STT value
+check_select = False
+def selectdata():
+    global check_select
+    global check_asc
+    global check_dec
+    check_select = True
+    check_dec = False
+    check_asc = False
+    showdata()
+    selec_e.delete(0,END)
 
-    
-    
+# GUI elements and layout
 add_label = Label(win,text="ADD DATA",fg="green")
 add_label.grid(column=0,row=0,sticky="S")
 
@@ -233,19 +237,30 @@ zipcode_e.grid(column=1,row=7)
 add_data = Button(win,text="Confirm More Data",command=adddata)
 add_data.grid(column=1,row=8,sticky="E",pady=5)
 
+selec_label = Label(win,text="SELECT DATA",fg="blue")
+selec_label.grid(column=0,row=9)
+
+selec_l = Label(win,text="Choose STT",font=("Arial",12))
+selec_l.grid(column=0,row=10)
+selec_e = Entry(win,width=50,border=3)
+selec_e.grid(column=1,row=10)
+
+selec_data = Button(win,text="Select",command=selectdata)
+selec_data.grid(column=1,row=11,sticky="E",pady=5)
+
 dele_label = Label(win,text="DELETE DATA",fg="red")
-dele_label.grid(column=0,row=9,sticky="S")
+dele_label.grid(column=0,row=12,sticky="S")
 
 dele_l = Label(win,text="Choose STT",font = ("Arial", 12))
-dele_l.grid(column=0,row=10)
+dele_l.grid(column=0,row=13)
 dele_e = Entry(win,width=50,border=3)
-dele_e.grid(column=1,row=10)
+dele_e.grid(column=1,row=13)
 
 delete_data = Button(win,text="Delete",command=delete)
-delete_data.grid(column=1,row=11,sticky="E",pady=5)
+delete_data.grid(column=1,row=14,sticky="E",pady=5)
 
 delete_data_a = Button(win,text="Delete All",command=deleteall)
-delete_data_a.grid(column=1,row=12,sticky="E",pady=5)
+delete_data_a.grid(column=1,row=15,sticky="E",pady=5)
 
 show_label = Label(win,text="SHOW DATA",fg="green")
 show_label.grid(column=2,row=0)
@@ -253,8 +268,8 @@ show_label.grid(column=2,row=0)
 show_data = Button(win,text="Show",command=showdata)
 show_data.grid(column=2,row=1,sticky="N",pady=5)
 
-f = LabelFrame(win,width=500,height=350)
-f.grid(column=3,row=0,rowspan=13,padx=5)
+f = LabelFrame(win,width=500,height=480)
+f.grid(column=3,row=0,rowspan=16,padx=5)
 f.grid_propagate(False)
 
 Format_l = Label(f,text="STT|F_Name|L_Name|Address|City|State|Zipcode")
