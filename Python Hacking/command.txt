@@ -1,0 +1,1 @@
+arp -a : used to view local ip

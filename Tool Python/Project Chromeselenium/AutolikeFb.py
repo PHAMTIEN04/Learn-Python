@@ -11,6 +11,7 @@ import re
 # Set up Selenium driver
 def setup_driver():
     options = webdriver.ChromeOptions()
+    options.add_argument('--headless') # Run in headless mode (mode without interface)
     options.add_argument('--incognito')
     prefs = {
         "profile.managed_default_content_settings.images": 2
@@ -53,7 +54,7 @@ def like_facebook_post(driver, post_url):
 
 # Main function to run the program
 def main():
-    os.chdir(r"C:\Learn Python\Tool Python\Project Chromeselenium")
+    # os.chdir(r"C:\Learn Python\Tool Python\Project Chromeselenium")
     driver = setup_driver()
     accounts = load_accounts('account.txt')
     
@@ -70,7 +71,7 @@ def main():
     
     driver.quit()
 
-if __name__ == '__main__':
+if __name__ == '__main__': # main
     main()
 
 # Đây là một chương trình sử dụng Selenium để tự động thích một bài đăng trên Facebook bằng nhiều tài khoản Facebook khác nhau được lưu trong file "account.txt".
