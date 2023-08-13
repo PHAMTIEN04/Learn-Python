@@ -1,24 +1,29 @@
 from tkinter import *
+from PIL import Image, ImageTk
+
+def create_circle_image(radius, color):
+    width = radius * 2
+    height = radius * 2
+    image = Image.new("RGBA", (width, height))
+    for y in range(height):
+        for x in range(width):
+            dx = abs(x - radius)
+            dy = abs(y - radius)
+            distance = (dx ** 2 + dy ** 2) ** 0.5
+            if distance <= radius:
+                image.putpixel((x, y), color)
+    return ImageTk.PhotoImage(image)
 
 win = Tk()
-win.title("Quản Lý Bán Hàng")
-win.geometry("1200x700+200+20")
-labe_nen = Label(win,text="",bg="gray",width=40,height=60)
-labe_nen.grid(column=0,rowspan=13)
+win.title("Hình Tròn trong Tkinter")
+win.geometry("300x300")
 
-label_test = Label(win,text="Test Font",fg="white",bg="gray")
-label_test.grid(column=0,row=0,rowspan=1,sticky="N W")
+circle_radius = 100
+circle_color = (0, 0, 0, 255)  # Màu đen
 
-label_test1 = Label(win,text="Test Font1",fg="white",bg="gray")
-label_test1.grid(column=0,row=0,rowspan=1,sticky="N W",pady=30)
+circle_image = create_circle_image(circle_radius, circle_color)
 
-
-
-
-
-
-
+label = Label(win, image=circle_image, borderwidth=0, highlightthickness=0)
+label.pack()
 
 win.mainloop()
-
-
