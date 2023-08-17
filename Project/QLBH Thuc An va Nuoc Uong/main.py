@@ -6,12 +6,12 @@ from PIL import Image, ImageTk
 win = Tk()
 win.title("Quản Lý Bán Hàng")
 win.geometry("1200x700+200+20")
-win.resizable(False, False)
+win.resizable(False, False) # Horizontal and vertical resizing is not allowed
 
 # Function to clear a specific area
 def clear_b():
-    cl = Label(win, text="", width=120, height=100)
-    cl.place(rely=0, relx=0.23)
+    cl = Label(win, text="", width=150, height=100)
+    cl.place(rely=0, relx=0.18)
 
 # Function to fetch food product data from the database
 def get_valueta_dtb(stt_ta):
@@ -96,6 +96,22 @@ def nuocuong():
     nd_lb_text = Label(win, text=get_valuenu_dtb(2))
     nd_lb_text.place(rely=0.26, relx=0.51)
 
+def add_data():
+    clear_b()
+    a_d_stt_text = Label(win,text="Stt")
+    a_d_stt_text.place(relx=0.2,rely=0.05)
+    a_d_stt_e = Entry(win)
+    a_d_stt_e.place(relx=0.225,rely=0.05)
+    
+    a_d_t_text = Label(win,text="Tên")
+    a_d_t_text.place(relx=0.2,rely=0.1)
+    a_d_t_e = Entry(win)
+    a_d_t_e.place(relx=0.225,rely=0.1)
+    
+    a_d_t_text = Label(win,text="Giá")
+    a_d_t_text.place(relx=0.2,rely=0.15)
+    a_d_t_e = Entry(win)
+    a_d_t_e.place(relx=0.225,rely=0.15)
 # Create a gray background label
 labe_nen = Label(win, text="", bg="gray", width=30, height=60)
 labe_nen.grid(column=0, rowspan=13)
@@ -113,7 +129,7 @@ Button_menu = Button(win, text="Sản Phẩm", fg="white", bg="gray", border=0, 
 Button_menu.grid(column=0, row=1, rowspan=1, pady=40, sticky="NW")
 
 # Create an 'Add Product' button
-Button_add_data = Button(win, text="Thêm Sản Phẩm", fg="white", bg="gray", border=0)
+Button_add_data = Button(win, text="Thêm Sản Phẩm", fg="white", bg="gray", border=0,command=add_data)
 Button_add_data.place(relx=0, rely=0.23)
 
 # Start the GUI event loop
