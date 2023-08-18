@@ -63,33 +63,45 @@ def menu():
         check = False
 
 # Function to display food products
+
 def thucan():
     clear_b()
+    # global list_img
     conn = sqlite3.connect("QLBHTANU.db")
     c = conn.cursor()
     c.execute("SELECT * FROM thucan")
     list_ta = c.fetchall()
     conn.commit()
     conn.close()
-    list_img = ["D:/Learn Python/Project/QLBH Thuc An va Nuoc Uong/banhuot.jpg", "D:/Learn Python/Project/QLBH Thuc An va Nuoc Uong/bunmannem.jpg"]
+
+    # list_img = ["D:/Learn Python/Project/QLBH Thuc An va Nuoc Uong/banhuot.jpg", "D:/Learn Python/Project/QLBH Thuc An va Nuoc Uong/bunmannem.jpg"]
+    # print(list_img)
     x_img = 0.23
     y_img = 0.1
     x_t = 0.28
-    y_t = 0.26
-    i = 0
-    for s, t, g in list_ta:
+    y_t = 0.18
+    t = 1
+    sl = 0
+    for s, t, g,f in list_ta:
         stt = s 
         ten = t
         gia = g
-        ta_img = resize_img(list_img[i], 200, 100)
+        file = f
+        if sl % 3 == 0:
+            x_img = 0.23
+            x_t = 0.28
+            y_img = y_img + 0.2
+            y_t = y_t + 0.15
+        ta_img = resize_img(file, 200, 100)
         ta_lb_img = Label(win, image=ta_img)
         ta_lb_img.image = ta_img
         ta_lb_img.place(relx=x_img, rely=y_img)
         ta_lb_text = Label(win, text=get_valueta_dtb(stt))
         ta_lb_text.place(relx=x_t, rely=y_t)
-        i = i + 1
-        x_img = x_img + x_img  # Increase y_img to adjust the vertical position of the next item
-        x_t =(x_t + x_t)-0.05 # Increase y_t similarly
+        x_img = x_img + 0.25  # Increase y_img to adjust the vertical position of the next item
+        x_t = (x_t + 0.30)-0.05 # Increase y_t similarly
+        
+        sl = sl + 1
 
 # Function to display drink products
 def nuocuong():
@@ -107,9 +119,12 @@ def nuocuong():
     nd_lb_img.place(relx=0.46, rely=0.1)
     nd_lb_text = Label(win, text=get_valuenu_dtb(2))
     nd_lb_text.place(rely=0.26, relx=0.51)
-
+    
+dt = StringVar()
+dt.set(" ")
 def add_data():
     clear_b()
+    global a_d_stt_e,a_d_t_e,a_d_g_e
     a_d_stt_text = Label(win,text="Stt")
     a_d_stt_text.place(relx=0.2,rely=0.05)
     a_d_stt_e = Entry(win)
@@ -128,21 +143,43 @@ def add_data():
     a_d_i_b = Button(win,text="Chọn ảnh",command=open_img)
     a_d_i_b.place(relx=0.2,rely=0.2)
     
-    dt = StringVar()
-    dt.set("a")
-    choose_ta = Radiobutton(win,text="Thức Ăn",variable=dt,value="a",command=on_selection_change)
+
+    choose_ta = Radiobutton(win,text="Thức Ăn",variable=dt,value="Thức Ăn",command=on_selection_change)
     choose_ta.place(relx=0.2,rely=0.30)
-    choose_nu = Radiobutton(win,text="Nước Uống",variable=dt,value="b",command=on_selection_change)
+    choose_nu = Radiobutton(win,text="Nước Uống",variable=dt,value="Nước Uống",command=on_selection_change)
     choose_nu.place(relx=0.2,rely=0.35)
-    # choose_ta.deselect()
-    # choose_nu.deselect()
+    
+    a_d_xn_b = Button(win,text="Xác Nhận",command=xacnhan)
+    a_d_xn_b.place(relx=0.2,rely=0.4)
+    
+def xacnhan():
+    global a_d_stt_e,a_d_t_e,a_d_g_e
+    # dt.set(" ")
+    global dt
+    global filename_img
+    if dt.get() == "Thức Ăn":
+        conn = sqlite3.connect("QLBHTANU.db")
+        c = conn.cursor()
+        c.execute("INSERT INTO thucan VALUES(:stt,:ten,:gia,:file)",{
+                "stt" : int(a_d_stt_e.get()),
+                "ten" : a_d_t_e.get(),
+                "gia" : int(a_d_g_e.get()),
+                "file": filename_img
+        })
+        conn.commit()
+        conn.close()
+    dt.set(" ")
+        # list_img.append(filename_img)
+    
 def on_selection_change():
     pass
 def open_img():
+    global filename_img
     win.filename = filedialog.askopenfilename(initialdir="D:/Learn Python/Project/QLBH Thuc An va Nuoc Uong",title="Select File",filetypes=(("jpg files","*.jpg"),("all files","*.*")))
     filename_img = win.filename
     Label(win,text="",width=55,height=1).place(relx=0.2,rely=0.25)
     Label(win,text=filename_img).place(relx=0.2,rely=0.25)
+    # list_img.append(filename_img)
 # Create a gray background label
 labe_nen = Label(win, text="", bg="gray", width=30, height=60)
 labe_nen.grid(column=0, rowspan=13)
@@ -168,23 +205,25 @@ win.mainloop()
 # import sqlite3
 # conn = sqlite3.connect("QLBHTANU.db")
 # c = conn.cursor()
-# # c.execute("""CREATE TABLE nuocuong(
-# #         stt integer,
-# #         ten text,
-# #         gia integer    
-# #     )""")
-# # c.execute("""CREATE TABLE thucan(
-# #         stt integer,
-# #         ten text,
-# #         gia integer    
-# #     )""")
+# c.execute("""CREATE TABLE nuocuong(
+#         stt integer,
+#         ten text,
+#         gia integer,
+#         file text    
+#     )""")
+# c.execute("""CREATE TABLE thucan(
+#         stt integer,
+#         ten text,
+#         gia integer,
+#         file text
+#     )""")
 # c.execute("INSERT INTO nuocuong VALUES(:stt,:ten,:gia)",{
 #         'stt' : 2,
 #         'ten' : "Nước Dừa",
 #         "gia" : 7000
 # })
-# # c.execute("DELETE FROM thucan WHERE stt = 2")
-# c.execute("SELECT * FROM nuocuong")
+# c.execute("DELETE FROM thucan WHERE stt = 3")
+# c.execute("SELECT * FROM thucan")
 # res = c.fetchall()
 # print(res)
 # conn.commit()
