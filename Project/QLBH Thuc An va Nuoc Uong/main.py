@@ -1,7 +1,7 @@
 from tkinter import *
 import sqlite3
 from PIL import Image, ImageTk
-
+from tkinter import filedialog
 # Create the main window
 win = Tk()
 win.title("Quản Lý Bán Hàng")
@@ -65,19 +65,31 @@ def menu():
 # Function to display food products
 def thucan():
     clear_b()
-    bu_img = resize_img("D:/Learn Python/Project/QLBH Thuc An va Nuoc Uong/banhuot.jpg", 200, 100)
-    bu_lb_img = Label(win, image=bu_img)
-    bu_lb_img.image = bu_img
-    bu_lb_img.place(relx=0.23, rely=0.1)
-    bu_lb_text = Label(win, text=get_valueta_dtb(1))
-    bu_lb_text.place(rely=0.26, relx=0.28)
-
-    bmn_img = resize_img("D:/Learn Python/Project/QLBH Thuc An va Nuoc Uong/bunmannem.jpg", 200, 100)
-    bmn_lb_img = Label(win, image=bmn_img)
-    bmn_lb_img.image = bmn_img
-    bmn_lb_img.place(relx=0.46, rely=0.1)
-    bmn_lb_text = Label(win, text=get_valueta_dtb(2))
-    bmn_lb_text.place(rely=0.26, relx=0.51)
+    conn = sqlite3.connect("QLBHTANU.db")
+    c = conn.cursor()
+    c.execute("SELECT * FROM thucan")
+    list_ta = c.fetchall()
+    conn.commit()
+    conn.close()
+    list_img = ["D:/Learn Python/Project/QLBH Thuc An va Nuoc Uong/banhuot.jpg", "D:/Learn Python/Project/QLBH Thuc An va Nuoc Uong/bunmannem.jpg"]
+    x_img = 0.23
+    y_img = 0.1
+    x_t = 0.28
+    y_t = 0.26
+    i = 0
+    for s, t, g in list_ta:
+        stt = s 
+        ten = t
+        gia = g
+        ta_img = resize_img(list_img[i], 200, 100)
+        ta_lb_img = Label(win, image=ta_img)
+        ta_lb_img.image = ta_img
+        ta_lb_img.place(relx=x_img, rely=y_img)
+        ta_lb_text = Label(win, text=get_valueta_dtb(stt))
+        ta_lb_text.place(relx=x_t, rely=y_t)
+        i = i + 1
+        x_img = x_img + x_img  # Increase y_img to adjust the vertical position of the next item
+        x_t =(x_t + x_t)-0.05 # Increase y_t similarly
 
 # Function to display drink products
 def nuocuong():
@@ -108,10 +120,29 @@ def add_data():
     a_d_t_e = Entry(win)
     a_d_t_e.place(relx=0.225,rely=0.1)
     
-    a_d_t_text = Label(win,text="Giá")
-    a_d_t_text.place(relx=0.2,rely=0.15)
-    a_d_t_e = Entry(win)
-    a_d_t_e.place(relx=0.225,rely=0.15)
+    a_d_g_text = Label(win,text="Giá")
+    a_d_g_text.place(relx=0.2,rely=0.15)
+    a_d_g_e = Entry(win)
+    a_d_g_e.place(relx=0.225,rely=0.15)
+    
+    a_d_i_b = Button(win,text="Chọn ảnh",command=open_img)
+    a_d_i_b.place(relx=0.2,rely=0.2)
+    
+    dt = StringVar()
+    dt.set("a")
+    choose_ta = Radiobutton(win,text="Thức Ăn",variable=dt,value="a",command=on_selection_change)
+    choose_ta.place(relx=0.2,rely=0.30)
+    choose_nu = Radiobutton(win,text="Nước Uống",variable=dt,value="b",command=on_selection_change)
+    choose_nu.place(relx=0.2,rely=0.35)
+    # choose_ta.deselect()
+    # choose_nu.deselect()
+def on_selection_change():
+    pass
+def open_img():
+    win.filename = filedialog.askopenfilename(initialdir="D:/Learn Python/Project/QLBH Thuc An va Nuoc Uong",title="Select File",filetypes=(("jpg files","*.jpg"),("all files","*.*")))
+    filename_img = win.filename
+    Label(win,text="",width=55,height=1).place(relx=0.2,rely=0.25)
+    Label(win,text=filename_img).place(relx=0.2,rely=0.25)
 # Create a gray background label
 labe_nen = Label(win, text="", bg="gray", width=30, height=60)
 labe_nen.grid(column=0, rowspan=13)
