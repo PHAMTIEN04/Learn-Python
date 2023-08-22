@@ -1,3 +1,4 @@
+# Import necessary libraries
 from tkinter import *
 import sqlite3
 from PIL import Image, ImageTk
@@ -44,7 +45,7 @@ def resize_img(path, width, height):
 
 # Placeholder for the 'Home' function
 def home():
-    pass
+    clear_b()
 
 # Global variables
 check = False
@@ -60,6 +61,7 @@ def menu():
     bt_home2.place(relx=0.01, rely=0.26)
     if check:
         Button_add_data.place(relx=0, rely=0.3)
+        Button_del_data.place(relx=0,rely=0.35)
         win.update()
         check = False
 
@@ -146,6 +148,7 @@ dt = StringVar()
 dt.set(" ")
 
 def add_data():
+    # Add product data logic here
     clear_b()
     global a_d_stt_e, a_d_t_e, a_d_g_e
     a_d_stt_text = Label(win, text="Stt")
@@ -171,10 +174,11 @@ def add_data():
     choose_nu = Radiobutton(win, text="Nước Uống", variable=dt, value="Nước Uống", command=on_selection_change)
     choose_nu.place(relx=0.2, rely=0.35)
     
-    a_d_xn_b = Button(win, text="Xác Nhận", command=xacnhan)
+    a_d_xn_b = Button(win, text="Xác Nhận", command=xacnhan_add)
     a_d_xn_b.place(relx=0.2, rely=0.4)
 
-def xacnhan():
+def xacnhan_add():
+    # Confirmation logic for adding data
     global a_d_stt_e, a_d_t_e, a_d_g_e
     global dt
     global filename_img
@@ -210,11 +214,50 @@ def on_selection_change():
     pass
 
 def open_img():
+    # Logic to open and display an image file
     global filename_img
     win.filename = filedialog.askopenfilename(initialdir="D:/Learn Python/Project/QLBH Thuc An va Nuoc Uong", title="Select File", filetypes=(("jpg files", "*.jpg"), ("all files", "*.*")))
     filename_img = win.filename
     Label(win, text=filename_img).place(relx=0.2, rely=0.25)
 
+dd = StringVar()
+dd.set(" ")
+def del_data():
+    # Delete product data logic here
+    clear_b()
+    global d_stt_e
+    d_stt_text = Label(win, text="Stt")
+    d_stt_text.place(relx=0.2, rely=0.05)
+    d_stt_e = Entry(win)
+    d_stt_e.place(relx=0.225, rely=0.05)
+    
+    choose_ta_d = Radiobutton(win, text="Thức Ăn", variable=dd, value="Thức Ăn")
+    choose_ta_d.place(relx=0.2, rely=0.10)
+    choose_nu_d = Radiobutton(win, text="Nước Uống", variable=dd, value="Nước Uống")
+    choose_nu_d.place(relx=0.2, rely=0.15)
+    
+    a_d_xn_b = Button(win, text="Xác Nhận",command=xacnhan_del)
+    a_d_xn_b.place(relx=0.2, rely=0.2)
+
+    
+def xacnhan_del():
+    # Confirmation logic for deleting data
+    global dd,d_stt_e
+    if dd.get() == "Thức Ăn":
+        conn = sqlite3.connect("QLBHTANU.db")
+        c = conn.cursor()
+        c.execute(f"DELETE FROM thucan WHERE stt = {int(d_stt_e.get())}")
+        conn.commit()
+        conn.close()
+    elif dd.get() == "Nước Uống":
+        conn = sqlite3.connect("QLBHTANU.db")
+        c = conn.cursor()
+        c.execute(f"DELETE FROM nuocuong WHERE stt = {int(d_stt_e.get())}")
+        conn.commit()
+        conn.close()
+    d_stt_e.delete(0,END)
+    dd.set(" ")
+    
 # Create a gray background label
 labe_nen = Label(win, text="", bg="gray", width=30, height=60)
 labe_nen.grid(column=0, rowspan=13)
@@ -235,6 +278,9 @@ Button_menu.grid(column=0, row=1, rowspan=1, pady=40, sticky="NW")
 Button_add_data = Button(win, text="Thêm Sản Phẩm", fg="white", bg="gray", border=0, command=add_data)
 Button_add_data.place(relx=0, rely=0.23)
 
+# Create an 'Delete Product' button
+Button_del_data = Button(win,text="Xóa Sản Phẩm", fg="white",bg="gray", border=0,command=del_data)
+Button_del_data.place(relx=0,rely=0.28)
 
 # Start the GUI event loop
 win.mainloop()
