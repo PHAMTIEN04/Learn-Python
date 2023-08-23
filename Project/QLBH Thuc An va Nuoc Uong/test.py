@@ -1,33 +1,26 @@
-from tkinter import *
-from tkinter import filedialog
+import time
+import pyautogui
 
-win = Tk()
-# def a():
-#     if v.get()=="t":
-#         my = Label(win,text=v.get())
-#         my.pack()
-# v = StringVar()
-# v.set(" ")
-# r = Radiobutton(win,text="MONO",variable=v,value="t")
-# r.pack()
-# rt = Button(win,text="Xác nhận",command=a)
-# rt.pack()
+def login_to_app(username, password):
+    # Mở ứng dụng Liên Minh Huyền Thoại (giả định ứng dụng đã được mở)
+    # Vị trí các trường đăng nhập và nút đăng nhập cần được xác định trước
+    login_x, login_y = 500, 300  # Vị trí nút Đăng nhập
+    username_x, username_y = 400, 200  # Vị trí trường Tên đăng nhập
+    password_x, password_y = 400, 250  # Vị trí trường Mật khẩu
 
-# def f():
-#     win.filename = filedialog.askopenfilename(initialdir="D:/Learn Python/Project/QLBH Thuc An va Nuoc Uong",title="Select File",filetypes=(("jpg files","*.jpg"),("all files","*.*")))
-#     lb = Label(win,text=win.filename)
-#     lb.pack()
-# a = Button(win,text="Click",command=f)
-# a.pack()
-win.geometry("300x300")
-dt = StringVar()
-dt.set(" ")
-def o():
+    # Click vào trường Tên đăng nhập và nhập tên đăng nhập
+    pyautogui.click(username_x, username_y)
+    pyautogui.typewrite(username)
 
-    choose_ta = Radiobutton(win,text="Thức Ăn",variable=dt,value="a")
-    choose_ta.place(relx=0.2,rely=0.25)
-    choose_nu = Radiobutton(win,text="Nước Uống",variable=dt,value="b")
-    choose_nu.place(relx=0.2,rely=0.35)
-bt = Button(win,text="Click",command=o)
-bt.pack()
-win.mainloop()
+    # Click vào trường Mật khẩu và nhập mật khẩu
+    pyautogui.click(password_x, password_y)
+    pyautogui.typewrite(password)
+
+    # Click nút Đăng nhập
+    pyautogui.click(login_x, login_y)
+
+    # Chờ 5 giây để đăng nhập (giả định)
+    time.sleep(5)
+
+# Thực hiện đăng nhập
+login_to_app("your_username", "your_password")
