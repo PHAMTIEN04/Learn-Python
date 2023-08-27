@@ -48,23 +48,31 @@ def home():
     clear_b()
 
 # Global variables
-check = False
+check = 0
 i = 1
 
 # Function to handle the 'Products' menu
 def menu():
     global check
-    check = True
-    bt_home1 = Button(win, text="Thức Ăn", fg="white", bg="gray", border=0, command=thucan)
-    bt_home1.place(relx=0.01, rely=0.22)
-    bt_home2 = Button(win, text="Nước Uống", fg="white", bg="gray", border=0, command=nuocuong)
-    bt_home2.place(relx=0.01, rely=0.26)
-    if check:
+    global bt_home1,bt_home2
+    check = check + 1
+    if check == 1:
+        bt_home1 = Button(win, text="Thức Ăn", fg="white", bg="gray", border=0, command=thucan)
+        bt_home1.place(relx=0.01, rely=0.22)
+        bt_home2 = Button(win, text="Nước Uống", fg="white", bg="gray", border=0, command=nuocuong)
+        bt_home2.place(relx=0.01, rely=0.26)
         Button_add_data.place(relx=0, rely=0.3)
-        Button_del_data.place(relx=0,rely=0.35)
-        win.update()
-        check = False
+        Button_edit_data.place(relx=0, rely=0.35)
+        Button_del_data.place(relx=0,rely=0.4)
 
+    elif check == 2:
+        bt_home1.destroy()  # Xóa nút "Thức Ăn"
+        bt_home2.destroy()  # Xóa nút "Nước Uống"
+        Button_add_data.place(relx=0, rely=0.23)
+        Button_edit_data.place(relx=0,rely=0.28)
+        Button_del_data.place(relx=0,rely=0.33)      
+        check = 0
+    win.update()
 # Function to display food products
 def thucan():
     clear_b()
@@ -219,6 +227,86 @@ def open_img():
     win.filename = filedialog.askopenfilename(initialdir="D:/Learn Python/Project/QLBH Thuc An va Nuoc Uong", title="Select File", filetypes=(("jpg files", "*.jpg"), ("all files", "*.*")))
     filename_img = win.filename
     Label(win, text=filename_img).place(relx=0.2, rely=0.25)
+    
+ed = StringVar()
+ed.set(" ")
+def edit_data():
+    # Edit product data logic here
+    clear_b()
+    global edit_d_stt_e, edit_d_t_e, edit_d_g_e
+    edit_d_stt_text = Label(win, text="Stt")
+    edit_d_stt_text.place(relx=0.2, rely=0.05)
+    edit_d_stt_e = Entry(win)
+    edit_d_stt_e.place(relx=0.225, rely=0.05)
+    
+    edit_d_t_text = Label(win, text="Tên")
+    edit_d_t_text.place(relx=0.2, rely=0.1)
+    edit_d_t_e = Entry(win)
+    edit_d_t_e.place(relx=0.225, rely=0.1)
+    
+    edit_d_g_text = Label(win, text="Giá")
+    edit_d_g_text.place(relx=0.2, rely=0.15)
+    edit_d_g_e = Entry(win)
+    edit_d_g_e.place(relx=0.225, rely=0.15)
+    
+    edit_d_i_b = Button(win, text="Chọn Ảnh",command=open_img)
+    edit_d_i_b.place(relx=0.2, rely=0.2)
+    
+    choose_ta_edit = Radiobutton(win, text="Thức Ăn", variable=ed, value="Thức Ăn")
+    choose_ta_edit.place(relx=0.2, rely=0.30)
+    choose_nu_edit = Radiobutton(win, text="Nước Uống", variable=ed, value="Nước Uống")
+    choose_nu_edit.place(relx=0.2, rely=0.35)
+    
+    edit_d_xn_b = Button(win, text="Xác Nhận", command=xacnhan_edit)
+    edit_d_xn_b.place(relx=0.2, rely=0.4)
+
+def xacnhan_edit():
+    # Confirmation logic for edit data
+    global ed
+    global edit_d_stt_e,edit_d_t_e,edit_d_g_e
+    global filename_img
+    if ed.get() == "Thức Ăn":
+        conn = sqlite3.connect("QLBHTANU.db")
+        c = conn.cursor()
+        c.execute("""UPDATE thucan SET
+                  stt = :stt,
+                  ten = :ten,
+                  gia = :gia,
+                  file = :file
+                  
+                  WHERE stt = :stt
+                  """,{
+                  'stt' : edit_d_stt_e.get(),
+                  'ten' : edit_d_t_e.get(),
+                  'gia' : edit_d_g_e.get(),
+                  'file': filename_img 
+                  })
+        conn.commit()
+        conn.close()
+    elif ed.get() == "Nước Uống":
+        conn = sqlite3.connect("QLBHTANU.db")
+        c = conn.cursor()
+        c.execute("""UPDATE nuocuong SET
+                  stt = :stt,
+                  ten = :ten,
+                  gia = :gia,
+                  file = :file
+                  
+                  WHERE stt = :stt
+                  """,{
+                  'stt' : edit_d_stt_e.get(),
+                  'ten' : edit_d_t_e.get(),
+                  'gia' : edit_d_g_e.get(),
+                  'file': filename_img 
+                  })
+        conn.commit()
+        conn.close()
+    ed.set(" ")
+    edit_d_stt_e.delete(0, END)
+    edit_d_t_e.delete(0, END)
+    edit_d_g_e.delete(0, END)
+    Label(win, text="", width=55, height=1).place(relx=0.2, rely=0.25)
+
 
 dd = StringVar()
 dd.set(" ")
@@ -278,9 +366,13 @@ Button_menu.grid(column=0, row=1, rowspan=1, pady=40, sticky="NW")
 Button_add_data = Button(win, text="Thêm Sản Phẩm", fg="white", bg="gray", border=0, command=add_data)
 Button_add_data.place(relx=0, rely=0.23)
 
+# Create an 'Edit Product' button
+Button_edit_data = Button(win,text="Sửa Sản Phẩm",fg="white",bg="gray",border=0,command=edit_data)
+Button_edit_data.place(relx=0,rely=0.28)
+
 # Create an 'Delete Product' button
 Button_del_data = Button(win,text="Xóa Sản Phẩm", fg="white",bg="gray", border=0,command=del_data)
-Button_del_data.place(relx=0,rely=0.28)
+Button_del_data.place(relx=0,rely=0.33)
 
 # Start the GUI event loop
 win.mainloop()
