@@ -15,8 +15,43 @@ def clear_b():
     cl = Label(win, text="", width=150, height=100)
     cl.place(rely=0, relx=0.18)
 
+def vnd(str_c):
+    str_n = str(str_c)
+    i = len(str_n) - 1
+    g = ""
+    cnt = 0
+    while i >= 0:
+        g = str_n[i] + g
+        if cnt % 3 == 2 and i > 0:
+            g = "." + g
+        i -= 1
+        cnt += 1
+    g_c = g + "đ"
+    return str(g_c)
+
+def get_value_g_ta_dtb(stt_ta):
+    conn_ta = sqlite3.connect("QLBHTANU.db")
+    c_ta = conn_ta.cursor()
+    c_ta.execute(f"SELECT * FROM thucan WHERE stt = {stt_ta}")
+    res_ta = c_ta.fetchall()
+    g_ta = res_ta[0][2]
+    conn_ta.commit()
+    conn_ta.close()
+    return str(g_ta)
+    
+def get_value_g_nu_dtb(stt_nu):
+    conn_nu = sqlite3.connect("QLBHTANU.db")
+    c_nu = conn_nu.cursor()
+    c_nu.execute(f"SELECT * FROM nuocuong WHERE stt = {stt_nu}")
+    res_nu = c_nu.fetchall()
+    g_nu = res_nu[0][2]
+    conn_nu.commit()
+    conn_nu.close()
+    return str(g_nu)
+ 
+
 # Function to fetch food product data from the database
-def get_valueta_dtb(stt_ta):
+def get_value_t_ta_dtb(stt_ta):
     conn_ta = sqlite3.connect("QLBHTANU.db")
     c_ta = conn_ta.cursor()
     c_ta.execute(f"SELECT * FROM thucan WHERE stt = {stt_ta}")
@@ -27,7 +62,7 @@ def get_valueta_dtb(stt_ta):
     return str(vl_ta)
 
 # Function to fetch drink product data from the database
-def get_valuenu_dtb(stt_nu):
+def get_value_t_nu_dtb(stt_nu):
     conn_nu = sqlite3.connect("QLBHTANU.db")
     c_nu = conn_nu.cursor()
     c_nu.execute(f"SELECT * FROM nuocuong WHERE stt = {stt_nu}")
@@ -98,8 +133,11 @@ def thucan():
         ta_lb_img = Label(win, image=ta_img)
         ta_lb_img.image = ta_img
         ta_lb_img.place(relx=x_img, rely=y_img)
-        ta_lb_text = Label(win, text=get_valueta_dtb(stt))
+        ta_lb_text = Label(win, text=get_value_t_ta_dtb(stt))
         ta_lb_text.place(relx=x_t, rely=y_t)
+
+        ta_lb_g = Label(win,text=vnd(get_value_g_ta_dtb(stt)))
+        ta_lb_g.place(relx=x_t,rely=y_t +0.03)
 
         if sl % 3 == 0:
             x_img = 0.23
@@ -137,8 +175,11 @@ def nuocuong():
         nu_lb_img = Label(win, image=nu_img)
         nu_lb_img.image = nu_img
         nu_lb_img.place(relx=x_img, rely=y_img)
-        nu_lb_text = Label(win, text=get_valuenu_dtb(stt))
+        nu_lb_text = Label(win, text=get_value_t_nu_dtb(stt))
         nu_lb_text.place(relx=x_t, rely=y_t)
+
+        nu_lb_g = Label(win,text=vnd(get_value_g_nu_dtb(stt)))
+        nu_lb_g.place(relx=x_t,rely=y_t +0.03)
 
         if sl % 3 == 0:
             x_img = 0.23
