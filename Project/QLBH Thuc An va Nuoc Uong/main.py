@@ -120,8 +120,8 @@ def thucan():
 
     x_img = 0.23
     y_img = 0.1
-    x_t = 0.28
-    y_t = 0.26
+    x_t = 0.23
+    y_t = 0.36
     sl = 1  # Start the counter
     for s, t, g, f in list_ta:
         stt = s
@@ -129,21 +129,24 @@ def thucan():
         gia = g
         file = f
 
-        ta_img = resize_img(file, 200, 100)
+        ta_img = resize_img(file, 200, 180)
         ta_lb_img = Label(win, image=ta_img)
         ta_lb_img.image = ta_img
         ta_lb_img.place(relx=x_img, rely=y_img)
-        ta_lb_text = Label(win, text=get_value_t_ta_dtb(stt))
+        ta_lb_text = Label(win, text=get_value_t_ta_dtb(stt),fg="blue",font=("bold",12,"bold"))
         ta_lb_text.place(relx=x_t, rely=y_t)
 
-        ta_lb_g = Label(win,text=vnd(get_value_g_ta_dtb(stt)))
+        ta_lb_g = Label(win,text=vnd(get_value_g_ta_dtb(stt)),fg="black",font=("bold",10,"bold"))
         ta_lb_g.place(relx=x_t,rely=y_t +0.03)
 
+        ta_bt_m = Button(win,text="Mua",border=3,bg="light green",font=("bold",10,"bold"))
+        ta_bt_m.place(relx=x_t+0.135,rely=y_t)
+        
         if sl % 3 == 0:
             x_img = 0.23
-            x_t = 0.28
-            y_img += 0.3
-            y_t += 0.3
+            x_t = 0.23
+            y_img += 0.4
+            y_t += 0.4
         else:
             x_img += 0.25  # Increase x_img to adjust the horizontal position of the next item
             x_t = (x_t + 0.30) - 0.05  # Increase x_t similarly
@@ -162,8 +165,8 @@ def nuocuong():
 
     x_img = 0.23
     y_img = 0.1
-    x_t = 0.28
-    y_t = 0.26
+    x_t = 0.23
+    y_t = 0.36
     sl = 1  # Start the counter
     for s, t, g, f in list_nu:
         stt = s
@@ -171,21 +174,21 @@ def nuocuong():
         gia = g
         file = f
 
-        nu_img = resize_img(file, 200, 100)
+        nu_img = resize_img(file, 200, 180)
         nu_lb_img = Label(win, image=nu_img)
         nu_lb_img.image = nu_img
         nu_lb_img.place(relx=x_img, rely=y_img)
-        nu_lb_text = Label(win, text=get_value_t_nu_dtb(stt))
+        nu_lb_text = Label(win, text=get_value_t_nu_dtb(stt),fg="blue",font=("bold",12,"bold"))
         nu_lb_text.place(relx=x_t, rely=y_t)
 
-        nu_lb_g = Label(win,text=vnd(get_value_g_nu_dtb(stt)))
+        nu_lb_g = Label(win,text=vnd(get_value_g_nu_dtb(stt)),fg="black",font=("bold",10,"bold"))
         nu_lb_g.place(relx=x_t,rely=y_t +0.03)
 
         if sl % 3 == 0:
             x_img = 0.23
-            x_t = 0.28
-            y_img += 0.3
-            y_t += 0.3
+            x_t = 0.23
+            y_img += 0.4
+            y_t += 0.4
         else:
             x_img += 0.25  # Increase x_img to adjust the horizontal position of the next item
             x_t = (x_t + 0.30) - 0.05  # Increase x_t similarly
