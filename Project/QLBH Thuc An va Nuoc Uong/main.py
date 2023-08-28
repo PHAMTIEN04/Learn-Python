@@ -3,6 +3,7 @@ from tkinter import *
 import sqlite3
 from PIL import Image, ImageTk
 from tkinter import filedialog
+from tkinter import messagebox
 
 # Create the main window
 win = Tk()
@@ -138,8 +139,9 @@ def thucan():
 
         ta_lb_g = Label(win,text=vnd(get_value_g_ta_dtb(stt)),fg="black",font=("bold",10,"bold"))
         ta_lb_g.place(relx=x_t,rely=y_t +0.03)
-
-        ta_bt_m = Button(win,text="Mua",border=3,bg="light green",font=("bold",10,"bold"))
+        
+        buy_callback_ta = lambda stt=stt, ten=ten, gia=gia, file = file: buy_product_ta(stt, ten, gia, file)
+        ta_bt_m = Button(win,text="Mua",border=3,bg="light green",font=("bold",10,"bold"),command=buy_callback_ta)
         ta_bt_m.place(relx=x_t+0.135,rely=y_t)
         
         if sl % 3 == 0:
@@ -153,6 +155,71 @@ def thucan():
         
         sl += 1  # Increment the counter
 
+
+def buy_product_ta(stt, ten, gia,file):
+    clear_b()
+    global count_sl_ta,ta_sl_buy_bt_cong,ta_sl_buy_bt_tru,ta_sl_buy_lb_text,ta_sum_buy_lb,gia_c
+    gia_c = gia
+    count_sl_ta = 0
+    ta_img_buy = resize_img(file,200,180)
+    ta_img_buy_lb = Label(win,image=ta_img_buy)
+    ta_img_buy_lb.image = ta_img_buy
+    ta_img_buy_lb.place(relx=0.23,rely=0.1)
+    
+    frame1_ta = LabelFrame(win,width=200,height=35)
+    frame1_ta.place(relx=0.44,rely=0.1)
+    ta_stt_buy_lb = Label(frame1_ta,text=f"STT : {stt}",font=("bold",10,"bold"))
+    ta_stt_buy_lb.place(relx=0.07,rely=0.13)
+    
+    frame2_ta = LabelFrame(win,width=200,height=35)
+    frame2_ta.place(relx=0.44,rely=0.2)
+    ta_t_buy_lb = Label(frame2_ta,text=f"Tên : {ten}",font=("bold",10,"bold"))
+    ta_t_buy_lb.place(relx=0.07,rely=0.13)
+    
+    frame3_ta = LabelFrame(win,width=200,height=35)
+    frame3_ta.place(relx=0.44,rely=0.3)
+    ta_g_buy_lb = Label(frame3_ta,text=f"Giá : {vnd(gia)}",font=("bold",10,"bold"))
+    ta_g_buy_lb.place(relx=0.07,rely=0.13)
+    
+    ta_sl_buy_lb = Label(win,text="Số Lượng:",font=("bold",10,"bold"))
+    ta_sl_buy_lb.place(relx=0.44,rely=0.37)
+    ta_sl_buy_bt_tru = Button(win,text="-",border=4,font=("bold",7,"bold"),command=tru_ta)
+    ta_sl_buy_bt_tru.place(relx=0.51,rely=0.37)
+    ta_sl_buy_lb_text = Label(win,text=count_sl_ta,font=("bold",11,"bold"))
+    ta_sl_buy_lb_text.place(relx=0.528,rely=0.37)
+    ta_sl_buy_bt_cong = Button(win,text="+",border=4,font=("bold",7,"bold"),command=cong_ta)
+    ta_sl_buy_bt_cong.place(relx=0.55,rely=0.37)
+    
+    ta_sum_buy_lb = Label(win,text=f"Tổng Tiền: {vnd(int(gia_c)*count_sl_ta)}",font=("bold",10,"bold"))
+    ta_sum_buy_lb.place(relx=0.44,rely=0.42)
+    
+    ta_xn_buy_bt = Button(win,text="Thanh Toán",font=("bold",10,"bold"),width=24,border=3,fg="white",bg="blue",command=xn_buy_ta)
+    ta_xn_buy_bt.place(relx=0.44,rely=0.5)
+
+def xn_buy_ta():
+    messagebox.showinfo("Thanh Toán","Thanh Toán Thành Công!!!")
+    global count_sl_ta,ta_sl_buy_lb_text,ta_sum_buy_lb,gia_c
+    count_sl_ta = 0
+    ta_sl_buy_lb_text.config(text=count_sl_ta)
+    ta_sum_buy_lb.config(text=f"Tổng Tiền: {vnd(int(gia_c)*count_sl_ta)}")
+    
+def cong_ta():
+    global count_sl_ta,ta_sl_buy_lb_text,ta_sum_buy_lb,gia_c
+    if count_sl_ta <= 49:
+        count_sl_ta = count_sl_ta + 1
+        
+    ta_sl_buy_lb_text.config(text=count_sl_ta)
+    ta_sum_buy_lb.config(text=f"Tổng Tiền: {vnd(int(gia_c)*count_sl_ta)}")
+    win.update()
+
+def tru_ta():
+    global count_sl_ta,ta_sl_buy_lb_text,ta_sum_buy_lb,gia_c
+    if count_sl_ta > 0:
+        count_sl_ta = count_sl_ta - 1
+    ta_sl_buy_lb_text.config(text=count_sl_ta)
+    ta_sum_buy_lb.config(text=f"Tổng Tiền: {vnd(int(gia_c)*count_sl_ta)}")
+    win.update()
+    
 # Function to display drink products
 def nuocuong():
     clear_b()
@@ -183,6 +250,10 @@ def nuocuong():
 
         nu_lb_g = Label(win,text=vnd(get_value_g_nu_dtb(stt)),fg="black",font=("bold",10,"bold"))
         nu_lb_g.place(relx=x_t,rely=y_t +0.03)
+        
+        buy_callback_nu = lambda stt=stt, ten=ten, gia=gia, file = file: buy_product_nu(stt, ten, gia, file)
+        nu_bt_m = Button(win,text="Mua",border=3,bg="light green",font=("bold",10,"bold"),command=buy_callback_nu)
+        nu_bt_m.place(relx=x_t+0.135,rely=y_t)
 
         if sl % 3 == 0:
             x_img = 0.23
@@ -195,6 +266,69 @@ def nuocuong():
         
         sl += 1  # Increment the counter
 
+def buy_product_nu(stt, ten, gia,file):
+    clear_b()
+    global count_sl_nu,nu_sl_buy_bt_cong,nu_sl_buy_bt_tru,nu_sl_buy_lb_text,nu_sum_buy_lb,gia_b
+    gia_b = gia
+    count_sl_nu = 0
+    nu_img_buy = resize_img(file,200,180)
+    nu_img_buy_lb = Label(win,image=nu_img_buy)
+    nu_img_buy_lb.image = nu_img_buy
+    nu_img_buy_lb.place(relx=0.23,rely=0.1)
+    
+    frame1_nu = LabelFrame(win,width=200,height=35)
+    frame1_nu.place(relx=0.44,rely=0.1)
+    nu_stt_buy_lb = Label(frame1_nu,text=f"STT : {stt}",font=("bold",10,"bold"))
+    nu_stt_buy_lb.place(relx=0.07,rely=0.13)
+    
+    frame2_nu = LabelFrame(win,width=200,height=35)
+    frame2_nu.place(relx=0.44,rely=0.2)
+    nu_t_buy_lb = Label(frame2_nu,text=f"Tên : {ten}",font=("bold",10,"bold"))
+    nu_t_buy_lb.place(relx=0.07,rely=0.13)
+    
+    frame3_nu = LabelFrame(win,width=200,height=35)
+    frame3_nu.place(relx=0.44,rely=0.3)
+    nu_g_buy_lb = Label(frame3_nu,text=f"Giá : {vnd(gia)}",font=("bold",10,"bold"))
+    nu_g_buy_lb.place(relx=0.07,rely=0.13)
+    
+    nu_sl_buy_lb = Label(win,text="Số Lượng:",font=("bold",10,"bold"))
+    nu_sl_buy_lb.place(relx=0.44,rely=0.37)
+    nu_sl_buy_bt_tru = Button(win,text="-",border=4,font=("bold",7,"bold"),command=tru_nu)
+    nu_sl_buy_bt_tru.place(relx=0.51,rely=0.37)
+    nu_sl_buy_lb_text = Label(win,text=count_sl_nu,font=("bold",11,"bold"))
+    nu_sl_buy_lb_text.place(relx=0.528,rely=0.37)
+    nu_sl_buy_bt_cong = Button(win,text="+",border=4,font=("bold",7,"bold"),command=cong_nu)
+    nu_sl_buy_bt_cong.place(relx=0.55,rely=0.37)
+    
+    nu_sum_buy_lb = Label(win,text=f"Tổng Tiền: {vnd(int(gia_b)*count_sl_nu)}",font=("bold",10,"bold"))
+    nu_sum_buy_lb.place(relx=0.44,rely=0.42)
+    
+    nu_xn_buy_bt = Button(win,text="Thanh Toán",font=("bold",10,"bold"),width=24,border=3,fg="white",bg="blue",command=xn_buy_nu)
+    nu_xn_buy_bt.place(relx=0.44,rely=0.5)
+    
+def xn_buy_nu():
+    messagebox.showinfo("Thanh Toán","Thanh Toán Thành Công!!!")
+    global count_sl_nu,nu_sl_buy_lb_text,nu_sum_buy_lb,gia_b
+    count_sl_nu = 0
+    nu_sl_buy_lb_text.config(text=count_sl_nu)
+    nu_sum_buy_lb.config(text=f"Tổng Tiền: {vnd(int(gia_b)*count_sl_nu)}")
+    
+def cong_nu():
+    global count_sl_nu,nu_sl_buy_lb_text,nu_sum_buy_lb,gia_b
+    if count_sl_nu <= 49:
+        count_sl_nu = count_sl_nu + 1
+        
+    nu_sl_buy_lb_text.config(text=count_sl_nu)
+    nu_sum_buy_lb.config(text=f"Tổng Tiền: {vnd(int(gia_b)*count_sl_nu)}")
+    win.update()
+
+def tru_nu():
+    global count_sl_nu,nu_sl_buy_lb_text,nu_sum_buy_lb,gia_b
+    if count_sl_nu > 0:
+        count_sl_nu = count_sl_nu - 1
+    nu_sl_buy_lb_text.config(text=count_sl_nu)
+    nu_sum_buy_lb.config(text=f"Tổng Tiền: {vnd(int(gia_b)*count_sl_nu)}")
+    win.update()
 # Create a StringVar to store the selected value from the radio buttons
 dt = StringVar()
 dt.set(" ")

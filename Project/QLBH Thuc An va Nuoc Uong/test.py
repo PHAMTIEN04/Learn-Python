@@ -1,31 +1,24 @@
-import tkinter as tk
-from tkinter import scrolledtext
 
-def insert_text():
-    text = entry.get()
-    scrolled_text.insert(tk.END, text + "\n")
-    entry.delete(0, tk.END)
+from tkinter import *
 
-root = tk.Tk()
-root.title("Scrollable Text")
 
-# Tạo một thanh cuộn dọc
-scrollbar = tk.Scrollbar(root)
-scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
 
-# Tạo một widget văn bản có thể cuộn
-scrolled_text = scrolledtext.ScrolledText(root, yscrollcommand=scrollbar.set)
-scrolled_text.pack(fill=tk.BOTH, expand=True)
+root = Tk()
+root.geometry("200x200")
+def open(text):
+    print(f"Text : {text}")
+    
 
-# Liên kết thanh cuộn với widget văn bản
-scrollbar.config(command=scrolled_text.yview)
+i = 0
+list_a = [1,2,3,4,5]
+while i <= 4 :
+    text = list_a[i]
+    a = Button(root,text="Mua",command=lambda x = text: open(x))
+    a.grid(column=0,row=i)
+    i = i + 1 
 
-# Tạo một trường văn bản để nhập dữ liệu
-entry = tk.Entry(root)
-entry.pack(fill=tk.BOTH, expand=True)
 
-# Tạo một nút để chèn văn bản vào widget văn bản cuộn
-insert_button = tk.Button(root, text="Insert", command=insert_text)
-insert_button.pack()
+
+
 
 root.mainloop()
