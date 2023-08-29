@@ -10,7 +10,7 @@ win = Tk()
 win.title("Quản Lý Bán Hàng")
 win.geometry("1200x700+200+20")
 win.resizable(False, False)  # Horizontal and vertical resizing is not allowed
-
+win.iconbitmap("D:/Learn Python/Project/QLBH Thuc An va Nuoc Uong/icon.ico")
 # Function to clear a specific area
 def clear_b():
     cl = Label(win, text="", width=150, height=100)
@@ -93,20 +93,20 @@ def menu():
     global bt_home1,bt_home2
     check = check + 1
     if check == 1:
-        bt_home1 = Button(win, text="Thức Ăn", fg="white", bg="gray", border=0, command=thucan)
-        bt_home1.place(relx=0.01, rely=0.22)
-        bt_home2 = Button(win, text="Nước Uống", fg="white", bg="gray", border=0, command=nuocuong)
-        bt_home2.place(relx=0.01, rely=0.26)
-        Button_add_data.place(relx=0, rely=0.3)
-        Button_edit_data.place(relx=0, rely=0.35)
-        Button_del_data.place(relx=0,rely=0.4)
+        bt_home1 = Button(win, text="Thức Ăn", fg="white", bg="gray", border=0, command=thucan,font=("bold",9,"bold"))
+        bt_home1.place(relx=0.037, rely=0.25)
+        bt_home2 = Button(win, text="Nước Uống", fg="white", bg="gray", border=0, command=nuocuong,font=("bold",9,"bold"))
+        bt_home2.place(relx=0.037, rely=0.3)
+        Button_add_data.place(relx=0.03, rely=0.35)
+        Button_edit_data.place(relx=0.03, rely=0.45)
+        Button_del_data.place(relx=0.03,rely=0.55)
 
     elif check == 2:
         bt_home1.destroy()  # Xóa nút "Thức Ăn"
         bt_home2.destroy()  # Xóa nút "Nước Uống"
-        Button_add_data.place(relx=0, rely=0.23)
-        Button_edit_data.place(relx=0,rely=0.28)
-        Button_del_data.place(relx=0,rely=0.33)      
+        Button_add_data.place(relx=0.03, rely=0.3)
+        Button_edit_data.place(relx=0.03,rely=0.4)
+        Button_del_data.place(relx=0.03,rely=0.5)      
         check = 0
     win.update()
 # Function to display food products
@@ -529,28 +529,29 @@ labe_nen = Label(win, text="", bg="gray", width=30, height=60)
 labe_nen.grid(column=0, rowspan=13)
 
 # Create a logo button
-Button_logo = Button(win, text="Logo", fg="white", bg="gray", border=0)
-Button_logo.grid(column=0, row=0, rowspan=1, sticky="NW")
+logo_img = resize_img("D:/Learn Python/Project/QLBH Thuc An va Nuoc Uong/logo.png",210,50)
+Button_logo = Button(win, text="Logo", fg="white", bg="gray", border=0,image=logo_img)
+Button_logo.place(relx=0,rely=0)
 
 # Create a 'Home' button
-Button_home = Button(win, text="Trang Chủ", fg="white", bg="gray", border=0, command=home)
-Button_home.grid(column=0, row=1, rowspan=1, sticky="NW")
+Button_home = Button(win, text="Trang Chủ", fg="white", bg="gray", border=0, command=home,font=("bold",12,"bold"))
+Button_home.place(relx=0.03,rely=0.1)
 
 # Create a 'Products' button
-Button_menu = Button(win, text="Sản Phẩm", fg="white", bg="gray", border=0, command=menu)
-Button_menu.grid(column=0, row=1, rowspan=1, pady=40, sticky="NW")
+Button_menu = Button(win, text="Sản Phẩm", fg="white", bg="gray", border=0, command=menu,font=("bold",12,"bold"))
+Button_menu.place(relx=0.03,rely=0.2)
 
 # Create an 'Add Product' button
-Button_add_data = Button(win, text="Thêm Sản Phẩm", fg="white", bg="gray", border=0, command=add_data)
-Button_add_data.place(relx=0, rely=0.23)
+Button_add_data = Button(win, text="Thêm Sản Phẩm", fg="white", bg="gray", border=0, command=add_data,font=("bold",12,"bold"))
+Button_add_data.place(relx=0.03, rely=0.3)
 
 # Create an 'Edit Product' button
-Button_edit_data = Button(win,text="Sửa Sản Phẩm",fg="white",bg="gray",border=0,command=edit_data)
-Button_edit_data.place(relx=0,rely=0.28)
+Button_edit_data = Button(win,text="Sửa Sản Phẩm",fg="white",bg="gray",border=0,command=edit_data,font=("bold",12,"bold"))
+Button_edit_data.place(relx=0.03,rely=0.4)
 
 # Create an 'Delete Product' button
-Button_del_data = Button(win,text="Xóa Sản Phẩm", fg="white",bg="gray", border=0,command=del_data)
-Button_del_data.place(relx=0,rely=0.33)
+Button_del_data = Button(win,text="Xóa Sản Phẩm", fg="white",bg="gray", border=0,command=del_data,font=("bold",12,"bold"))
+Button_del_data.place(relx=0.03,rely=0.5)
 
 # Start the GUI event loop
 win.mainloop()
