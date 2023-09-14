@@ -25,7 +25,7 @@ service = Service(executable_path=driver_path)
 driver = webdriver.Chrome(service=service, options=options)
 
 # Navigate to the target website.
-driver.get("https://10fastfingers.com/competition/64fe1ddddd351")
+driver.get("https://10fastfingers.com/competition/65003b7229693")
 
 # Wait for the page to load completely.
 sleep(5)
@@ -36,6 +36,8 @@ driver.execute_script(js_click)
 
 # Wait for an element with ID 'row1' to be present on the page.
 WebDriverWait(driver, 30).until(EC.presence_of_element_located((By.ID, 'row1')))
+
+
 
 # Find the div element with ID 'row1'.
 div_element = driver.find_element(By.ID, 'row1')
