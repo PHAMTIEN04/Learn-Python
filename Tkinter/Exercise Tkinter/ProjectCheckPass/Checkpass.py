@@ -2,20 +2,41 @@ import random
 from tkinter import *
 
 
-win = Tk()
+def open():
+    global input_pass
+    win = Tk()
 
-text1= Label(win,text="Account :")
-text1.grid(column=0,row= 0,padx = 10,pady=10)
-input_pass = Entry(win,border=2)
-input_pass.grid(column=1,row=0)
+    text1= Label(win,text="Account :")
+    text1.grid(column=0,row= 0,padx = 10,pady=10)
+    input_pass = Entry(win,border=2)
+    input_pass.grid(column=1,row=0)
 
-text= Label(win,text="Password :")
-text.grid(column=0,row= 1,padx=10)
-input_pass = Entry(win,border=2)
-input_pass.grid(column=1,row=1)
+    text= Label(win,text="Password :")
+    text.grid(column=0,row= 1,padx=10)
+    input_pass = Entry(win,border=2)
+    input_pass.grid(column=1,row=1)
 
+
+
+
+
+
+    Enter =Button(win,text="Login",width=5,height=2,border = 2,bg="red",fg="green",command=checkpass)
+    Enter.grid(column=1,row=2,pady =10)
+
+    win["bg"] = "blue"
+    win.geometry("259x150")
+
+
+
+
+
+
+    win.mainloop()
+    checkpass()
 def checkpass():
-    keyboard = "1234567890qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM"
+    global input_pass
+    keyboard = "1234567890"
     keyboard_list = list(keyboard)
     password = input_pass.get()
     guess_pass = ''
@@ -29,20 +50,18 @@ def checkpass():
                 text_pass = text_pass + i
             print("Susscess!!!")
             print("Password is :'",text_pass,"'",sep="",end="")
-            break
+            break    
+    
+from threading import Thread
 
-
-
-
-Enter =Button(win,text="Login",width=5,height=2,border = 2,bg="red",fg="green",command=checkpass)
-Enter.grid(column=1,row=2,pady =10)
-
-win["bg"] = "blue"
-win.geometry("259x150")
-
-
-
-
-
-
-win.mainloop()
+thread_list = []
+size = 3
+for i in range(size):
+    thread = Thread(target=open)
+    thread_list.append(thread)
+    
+for thread in thread_list:
+    thread.start()
+    
+for thread in thread_list:
+    thread.join()
