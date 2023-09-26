@@ -14,3 +14,5 @@ if i <= n :
     print(i)
 else:
     print(s)
+    
+print(s)
