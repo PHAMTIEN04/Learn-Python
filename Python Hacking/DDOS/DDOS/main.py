@@ -1,8 +1,8 @@
 import socket
 import threading
 
-target = "www.nettruyenmax.com" # The target IP address to scan for open ports.
-port =80
+target = "192.168.1.10" # The target IP address to scan for open ports.
+port =53
 # i = 1
 fake_ip = "182.21.20.32"
 already_connected = 0

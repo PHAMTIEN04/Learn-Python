@@ -2,7 +2,7 @@ import socket
 import threading
 from queue import Queue
 
-target = "vi.wikipedia.org"  # The target IP address to scan for open ports.
+target = "192.168.1.10"  # The target IP address to scan for open ports.
 queue = Queue()  # Queue to store the list of ports to be scanned.
 open_ports = []  # List to store the open ports found during scanning.
 
