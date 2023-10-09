@@ -16,19 +16,21 @@ def c_du(value):
             cnt = cnt + 1
     return cnt
         
-s = 1
-x = float(input())  
+s = 1.0
+x = float(input())
 if abs(x) <= 30:
     epsilon = 1e-9 # Ngưỡng
 
     i = 1
     term = (x ** i) / gt(i)
 
-    while abs(term) > epsilon:
+    while term > epsilon:
         s = s + term
         i = i + 1
         term = (x ** i) / gt(i)
 
 
     print("{:.4f}".format(s))
+
+
 
