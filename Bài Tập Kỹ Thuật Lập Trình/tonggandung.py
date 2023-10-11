@@ -28,6 +28,7 @@ if abs(x) <= 30:
         s = s + term
         i = i + 1
         term = (x ** i) / gt(i)
+        print(term)
 
 
     print("{:.4f}".format(s))
