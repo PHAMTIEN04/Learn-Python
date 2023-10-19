@@ -1,20 +1,12 @@
 # Import necessary modules from Selenium
-from selenium import webdriver
+from selenium.webdriver import Chrome
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
-from selenium.webdriver.chrome.options import Options
-
-# Import the sleep function from the time module
+from webdriver_manager.chrome import ChromeDriverManager
 from time import sleep
 
-# Specify the path to the Chrome WebDriver executable
-path = "D:/Learn Python/Tool Python/Exercise/Chrome Selenium/chromedriver.exe"
 
-# Create a service object for the WebDriver with the specified path
-service = Service(executable_path=path)
-
-# Create a Chrome WebDriver instance using the service
-driver = webdriver.Chrome(service=service)
+driver = Chrome(ChromeDriverManager().install())
 
 # Open the Facebook website
 driver.get("https://www.facebook.com/")

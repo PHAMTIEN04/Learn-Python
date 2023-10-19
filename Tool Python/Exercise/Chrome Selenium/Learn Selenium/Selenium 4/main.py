@@ -1,19 +1,12 @@
 # Import necessary libraries from Selenium
-from selenium import webdriver
 from selenium.webdriver import Chrome
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
+from webdriver_manager.chrome import ChromeDriverManager
 from time import sleep
 
-# Specify the path to the Chrome WebDriver executable
-path = r"D:/Learn Python/Tool Python/Exercise/Chrome Selenium/chromedriver.exe"
 
-# Create a WebDriver service using the specified path
-service = Service(executable_path=path)
-
-# Create a Chrome WebDriver instance using the service
-driver = Chrome(service=service)
-
+driver = Chrome(ChromeDriverManager().install())
 # Navigate to a website
 driver.get("https://money.rediff.com/gainers/bse/daily/groupa")
 

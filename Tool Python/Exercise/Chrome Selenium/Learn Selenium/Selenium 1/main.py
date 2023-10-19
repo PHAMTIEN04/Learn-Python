@@ -1,16 +1,12 @@
 # Importing necessary modules
 from selenium.webdriver import Chrome
 from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.common.by import By
+from webdriver_manager.chrome import ChromeDriverManager
 from time import sleep
 
-# Path to the Chrome WebDriver executable
-path = "D:/Learn Python/Tool Python/Exercise/Chrome Selenium/chromedriver.exe"
 
-# Initializing the WebDriver service
-service = Service(executable_path=path)
-
-# Creating a Chrome WebDriver instance
-driver = Chrome(service=service)
+driver = Chrome(ChromeDriverManager().install())
 
 # Navigating to a website
 driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login")

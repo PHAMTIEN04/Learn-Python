@@ -1,16 +1,11 @@
 from selenium.webdriver import Chrome
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
+from webdriver_manager.chrome import ChromeDriverManager
 from time import sleep
 
-# Set the path to the Chrome WebDriver executable
-path = r"D:/Learn Python/Tool Python/Exercise/Chrome Selenium/chromedriver.exe"
 
-# Create a Service object for the WebDriver with the specified path
-service = Service(executable_path=path)
-
-# Initialize the Chrome WebDriver with the service
-driver = Chrome(service=service)
+driver = Chrome(ChromeDriverManager().install())
 
 # Navigate to the website
 driver.get("http://www.automationpractice.pl/index.php")
