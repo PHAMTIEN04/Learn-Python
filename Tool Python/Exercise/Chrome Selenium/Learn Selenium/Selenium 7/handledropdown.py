@@ -9,15 +9,17 @@ from time import sleep
 
 # Initialize the Chrome driver using ChromeDriverManager to handle automatic driver setup
 driver = Chrome(ChromeDriverManager().install())
-
+driver.maximize_window()
 # Set an implicit wait time of 30 seconds to wait for elements to appear
-driver.implicitly_wait(30)
+# driver.implicitly_wait(30)
 
 # Navigate to the OpenCart registration page
-driver.get("https://www.opencart.com/index.php?route=account/register")
-
+driver.get("https://www.globalsqa.com/demo-site/select-dropdown-menu/")
+driver.implicitly_wait(10)
 # Find the dropdown element by its XPath
-dropd = Select(driver.find_element(By.XPATH, "//select[@id='input-country']"))
+# select = Select(driver.find_element(By.XPATH, "//*[@id='post-2646']/div[2]/div/div/div/p/select"))
+# select.select_by_value("ASM")
+dropd = Select(driver.find_element(By.XPATH, "//*[@id='post-2646']/div[2]/div/div/div/p/select"))
 
 # Select options from the dropdown using various methods
 # dropd.select_by_visible_text("QA Engineer")
@@ -40,8 +42,8 @@ print("Total options in the dropdown:", len(alloptions))
 #         break
 
 # Find the options using a different XPath and print their count
-alloptions = driver.find_element(By.XPATH, "//*[@id='input-country']/option")
-print("Total options using a different XPath:", len(alloptions))
+# alloptions = driver.find_element(By.XPATH, "//*[@id='input-country']/option")
+# print("Total options using a different XPath:", len(alloptions))
 
 # Sleep for 100 seconds (not recommended, just for demonstration)
 sleep(100)
