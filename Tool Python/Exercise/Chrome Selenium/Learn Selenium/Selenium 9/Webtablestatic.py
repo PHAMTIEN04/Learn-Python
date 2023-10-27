@@ -1,6 +1,7 @@
 # Import necessary libraries from Selenium and time
 from selenium import webdriver
 from selenium.webdriver import Chrome
+from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager
 from time import sleep
@@ -9,7 +10,8 @@ from time import sleep
 class Webtable_static:
     def setup(self):
         # Initialize the Chrome driver and maximize the window
-        self.driver = Chrome(executable_path=ChromeDriverManager().install())
+        self.service = Service(executable_path="D:/Learn Python/Tool Python/Exercise/Chrome Selenium/chromedriver.exe")
+        self.driver = Chrome(service=self.service)
         self.driver.maximize_window()
 
     def ws(self):
