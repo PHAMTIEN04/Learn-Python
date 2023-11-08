@@ -1,0 +1,25 @@
+
+**Mouse Operations:**
+
+**ActionChains:**
+1. **Mouse Hover**
+   - Syntax: `move_to_element(element)`
+2. **Right Click**
+   - Syntax: `context_click(element)`
+3. **Double Click**
+   - Syntax: `double_click(element)`
+4. **Drag and Drop**
+   - Syntax: `drag_and_drop(source, target)`
+
+**Slider:**
+- Syntax: `drag_and_drop_by_offset(element, X, Y)`
+
+**Scrolling Page:**
+- Syntax: `driver.execute_script("window.scrollBy(x, y)")`
+- Syntax: `driver.execute_script("return window.pageYOffset;")` (returns the scroll value for Y-axis)
+- Syntax: `driver.execute_script("arguments[0].scrollIntoView();", flag)` (scroll until the element is in view)
+- Syntax: `driver.execute_script("window.scrollBy(0, document.body.scrollHeight)")` (scroll to the bottom of the page)
+- Syntax: `driver.execute_script("window.scrollBy(0, -document.body.scrollHeight)")` (scroll to the top of the page)
+
+**Assignment Link:**
+[https://testautomationpractice.blogspot.com/](https://testautomationpractice.blogspot.com/)

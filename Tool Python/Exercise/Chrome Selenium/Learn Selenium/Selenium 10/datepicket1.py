@@ -3,6 +3,7 @@ from selenium import webdriver
 from selenium.webdriver import Chrome
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
+from webdriver_manager.chrome import ChromeDriverManager
 from time import sleep
 import datetime
 
@@ -11,8 +12,8 @@ class Datepicket:
     # Constructor for the Datepicket class
     def __init__(self):
         # Set up the Chrome WebDriver
-        self.service = Service(executable_path="D:/Learn Python/Tool Python/Exercise/Chrome Selenium/chromedriver.exe")
-        self.driver = Chrome(service=self.service)
+        # self.service = Service(executable_path="D:/Learn Python/Tool Python/Exercise/Chrome Selenium/chromedriver.exe")
+        self.driver = Chrome(executable_path=ChromeDriverManager().install())
         self.driver.maximize_window()
 
     # Method to get the current date
