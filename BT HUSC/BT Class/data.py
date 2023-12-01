@@ -27,8 +27,7 @@ class SANPHAM:
         if check_D == True:
             list_r.append('D')
         return list_r
-s = SANPHAM()
-print(s.cau1())
+
 class LAPTOP(SANPHAM):
     model = [2001,2002,2003,2004,2005,2006]
     TocDo = [2.00,1.73,1.80,2.00,2.16,2.00]
