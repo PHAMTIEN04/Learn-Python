@@ -27,13 +27,16 @@ for i in range(len(arr)):
 print(arr)
 
 # //5
+print(5)
 la = [0,1,2,3,4,5,6,7,8,9]
 arr = np.array(la)
-if arr.shape[0] % 2== 0:
-    c = arr.reshape(2,5)
+i = 6
+if len(arr) % 2 == 0 and len(arr) / i == 2:    
+    c = arr.reshape(2,i)
+    print(c)
 else:
     print("Loi")
-print(c)
+
 
 # //6
 L1 = [random.randint(1,10) for x in range(1,10)]
