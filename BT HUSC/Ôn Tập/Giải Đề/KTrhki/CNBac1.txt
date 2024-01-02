@@ -1,0 +1,2 @@
+CN001,T,17/11/2004,10,<bound method CongNhan.TienLuong of <cau3.CongNhan object at 0x0000020E8CB7F850>>
+CN002,A,17/12/2005,10,<bound method CongNhan.TienLuong of <cau3.CongNhan object at 0x0000020E8CB7F6D0>>
