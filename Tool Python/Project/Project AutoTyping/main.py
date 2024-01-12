@@ -5,7 +5,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.service import Service
-
+from webdriver_manager.chrome import ChromeDriverManager
 from time import sleep
 
 # Configure Chrome options to disable loading images.
@@ -19,13 +19,13 @@ options.add_experimental_option("prefs", prefs)
 driver_path = "D:/Learn Python/Tool Python/Project AutoTyping/chromedriver"
 
 # Create a Service object for ChromeDriver.
-service = Service(executable_path=driver_path)
+service = Service(executable_path=ChromeDriverManager().install())
 
 # Initialize the WebDriver with configured options and service.
-driver = webdriver.Chrome(service=service, options=options)
+driver = webdriver.Chrome(service=service,options=options)
 
 # Navigate to the target website.
-driver.get("https://10fastfingers.com/competition/65003b7229693")
+driver.get("https://10fastfingers.com/competition/659d89da5e61a")
 
 # Wait for the page to load completely.
 sleep(5)
