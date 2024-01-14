@@ -4,6 +4,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from time import sleep
 import re
+import os
 
 
 
@@ -38,7 +39,8 @@ class SET_UP:
     def __init__(self,url = "https://www.facebook.com/",i =0):
         self.i = i
         self.options = Options()
-        self.options.add_argument(f"--user-data-dir=D:\Learn Python\Tool Python\Exercise\Chrome Selenium\Exercise Selenium\Interact Facebook\Facebook account\Account {self.i}")
+        location = os.getcwd()
+        self.options.add_argument(f"--user-data-dir={location}Facebook account\Account {self.i}")
         self.options.add_argument('--disable-notifications')
         self.options.add_experimental_option(
             "prefs", {"profile.managed_default_content_settings.images": 2}
