@@ -26,5 +26,16 @@
 
 # sleep(100)
 # driver.close()
-import os
-print(os.getcwd())
+# import os
+# print(os.getcwd())
+# 
+import random
+from unidecode import unidecode
+with open("content.txt","r",encoding="utf-8") as r_content:
+    read = r_content.read()
+    list_r = read.split("\n")
+    print(list_r)
+# content = 
+
+print(random.choice(list_r))
+

@@ -14,18 +14,20 @@ win.iconbitmap("iconfb.ico")
 treeview = ttk.Treeview(win)
 
 treeview.configure(height=20)
-treeview['columns'] = ("ID","Status")
+treeview['columns'] = ("ID","Type","Status")
 
 treeview.column("#0",width=50,anchor=W)
-treeview.column("ID",anchor=CENTER,width=170)
-treeview.column("Status",anchor=CENTER,width=120)
+treeview.column("ID",anchor=CENTER,width=150)
+treeview.column("Type",anchor=CENTER,width=70)
+treeview.column("Status",anchor=CENTER,width=70)
 
 treeview.heading("#0",text="STT",anchor=CENTER)
 treeview.heading("ID",text="ID",anchor=CENTER)
+treeview.heading("Type",text="Type",anchor=CENTER)
 treeview.heading("Status",text="Status",anchor=CENTER)
 def test():
     for i in range(100):
-        treeview.insert(parent="", index="end", iid=i, text=i, values=(112312, "Success"))
+        treeview.insert(parent="", index="end", iid=i, text=i, values=(112312,"Like","Success"))
         
 
 
