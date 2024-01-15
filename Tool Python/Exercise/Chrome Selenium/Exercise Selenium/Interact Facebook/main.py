@@ -74,16 +74,16 @@ class LOGIN(SET_UP,ACCOUNT):
         
         try:
             if self.get_title() == "Facebook – log in or sign up":
-                self.driver.find_element(By.XPATH,"//*[@id='m_login_email']").send_keys(self.account[self.i])
-                self.driver.find_element(By.XPATH,"//*[@id='password_input_with_placeholder']/input").send_keys(self.password[self.i])
-                self.driver.find_element(By.XPATH,"//*[@id='login_form']/ul/li[3]/input").click()
+                self.driver.find_element(By.CLASS_NAME,"inputtext._55r1._6luy").send_keys(self.account[self.i])
+                self.driver.find_element(By.CLASS_NAME,"inputtext._55r1._6luy._9npi").send_keys(self.password[self.i])
+                self.driver.find_element(By.CLASS_NAME,"_42ft._4jy0._6lth._4jy6._4jy1.selected._51sy").click()
                 if self.get_title() != "Facebook – log in or sign up" and self.get_title() != "Log in to Facebook":
                     print(f"Account:{self.account[self.i]} Login Success!!!")
                 else:
                     print(f"Account:{self.account[self.i]} Login failed!!!")
             
-        except:
-            print("Error!!!")
+        except Exception as e:
+            print("Error:",e)
 
 # a = LOGIN(url ="https://www.facebook.com/")
 # a.log()
@@ -207,6 +207,7 @@ class MANAGE(INTERFACE):
         while i < a.len_account():
             try:
                 mn = INTERACT(link=link, account=a.account[i], password=a.password[i], url="https://www.facebook.com/", i=i)
+                
                 if mn.get_title() != "Facebook – log in or sign up" and mn.get_title() != "Log in to Facebook":
                     if action_type == "Like":
                         mn.like()
