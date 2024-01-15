@@ -129,7 +129,7 @@ class INTERFACE:
         self.win.geometry("700x500")
         self.win.resizable(False,False)
         self.win.title("Interact Facebook")
-        self.win.iconbitmap("iconfb.ico")
+        self.win.iconbitmap("./iconfb.ico")
         self.treeview = ttk.Treeview(self.win)
     def treeview_set(self,i,id,type,status):
         self.treeview.insert(parent="", index="end", iid=i, text=i, values=(id,type,status))
