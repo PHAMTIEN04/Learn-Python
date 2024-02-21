@@ -1,5 +1,6 @@
 # Import necessary modules from the Selenium package.
 from selenium import webdriver
+from selenium.webdriver import Chrome
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -22,10 +23,10 @@ driver_path = "D:/Learn Python/Tool Python/Project AutoTyping/chromedriver"
 service = Service(executable_path=ChromeDriverManager().install())
 
 # Initialize the WebDriver with configured options and service.
-driver = webdriver.Chrome(service=service,options=options)
+driver = Chrome(service=service,options=options)
 
 # Navigate to the target website.
-driver.get("https://10fastfingers.com/competition/659d89da5e61a")
+driver.get("https://10fastfingers.com/typing-test/vietnamese")
 
 # Wait for the page to load completely.
 sleep(5)

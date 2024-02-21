@@ -1,22 +1,29 @@
-n = int(input())
-a = []
-for i in range(n):
-    row = list(map(int, input().split()))
-    a.append(row)
+import random
 
-sum1 = 0
-sum2 = 0
+a = [1,2,3,5,7]
 
-for i in range(n):
-    sum1 += a[i][i]
-    sum2 += a[i][n - i - 1]
 
-# Kiểm tra nếu giao điểm của hai đường chéo phụ là cùng một điểm
-if n % 2 != 0:
-    middle = n // 2
-    sum2 -= a[middle][middle]
-
-print(sum1 + sum2)
-
-a = 1
-print(type(a))
+while True:
+    b = random.choices(a,k=3)
+    check = True
+    for i in range(1,len(b)):
+        if b[0] == b[i]:
+            check= False
+            break
+    if check == True: 
+        check = str(b[0]) + str(b[1]) + str(b[2])
+        oke1 = random.choice(a)
+        oke2 = random.choices(a,k=2)
+        check1 = int(oke1)
+        check2 = str(oke2[0]) + str(oke2[1]) 
+        check3 = int(oke2[0]) + int(oke2[1])
+        if oke1 not in b and oke2 not in b:
+            if int(check) + check1 == 130 :
+                print("{} + {} = 130".format(check,check1))
+                break
+            if int(check) + int(check2) == 130 :
+                print("{} + {} = 130".format(check,check2))
+                break
+            if int(check) + check3 == 130 :
+                print("{} + {} = 130".format(check,check3))
+                break
