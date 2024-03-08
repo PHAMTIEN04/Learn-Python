@@ -1,8 +1,12 @@
 # Nội Suy Newton
+import pandas as pd
+from fractions import Fraction
+def decimal_to_fraction(value):
+    return str(Fraction(value).limit_denominator())
 x = [-1,-2,1,2]
 p_x = [1,2,3,4]
 size = len(p_x)
-import pandas as pd
+
 
 data = {
   "X": x,
@@ -24,7 +28,10 @@ while True:
             arr_c = []
             for i in range(0, size):
                 try:
-                    m_p.append(p_x[i])
+                    if isinstance(value, float):
+                        m_p.append(decimal_to_fraction(p_x[i]))
+                    else:
+                        m_p.append(p_x[i])
                 except IndexError:
                     m_p.insert(0,"-")
             i = -1
