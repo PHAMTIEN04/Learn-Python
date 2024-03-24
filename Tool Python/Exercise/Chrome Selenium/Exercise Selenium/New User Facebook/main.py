@@ -174,6 +174,7 @@ def send_messages(driver,list_id_old):
                         print("Window with the title 'Open' not found.")
                     sleep(3)
                     driver.find_element(By.XPATH,"//p[contains(@class, 'xat24cr xdj266r')]").send_keys("Bạn làm xong gửi mình ID Onus để mình tặng voucher và mời vào nhóm Tín Hiệu Onus nha",Keys.ENTER)
+                    sleep(5)
                     print(f"ID:{i} Sussccess")
                 except Exception as e:
                     print(f"ID:{i} Error!!")
