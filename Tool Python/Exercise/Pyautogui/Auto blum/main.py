@@ -29,12 +29,13 @@ images = [
     {"file": "img1.png", "confidence": 0.8, "region": (733,231,380,600)}, 
     {"file": "img2.png", "confidence": 0.9, "region": (733,231,380,600)}, 
     {"file": "img3.png", "confidence": 0.8, "region": (733,231,380,600)},  
-    {"file": "img4.png", "confidence": 0.8, "region": (733,231,380,600)}  
+    {"file": "img4.png", "confidence": 0.8, "region": (733,231,380,600)},
+    {"file": "img5.png", "confidence": 0.9, "region": (733,231,380,600)},   
 ]
 
 # Use ThreadPoolExecutor to increase the number of concurrent threads
-with ThreadPoolExecutor(max_workers=8) as executor:  # c
-    for i in range(200):  
+with ThreadPoolExecutor(max_workers=10) as executor:  # c
+    for i in range(1000):  
         futures = [executor.submit(find_and_click, image) for image in images]
         
 
@@ -45,4 +46,4 @@ with ThreadPoolExecutor(max_workers=8) as executor:  # c
 
 # pos = pag.position()
 # print(pos)
-# pag.screenshot("hihi.png",region=(733,231,380,600))
+# pag.screenshot("hihi.png",region=(756,259,380,600))
