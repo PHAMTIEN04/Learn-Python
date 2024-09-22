@@ -18,8 +18,11 @@ images = [
 
 while True:    
     pos_play = pag.locateOnScreen("play.png",confidence=0.9,region=(752,317,390,600))
+    
     if pos_play is not None:
+        print("Play game!!!")
         pag.click(pos_play,interval=0.0)
+        print("Đang đào vàng...")
         while True:
         #play 
 
@@ -34,6 +37,7 @@ while True:
             if pos_back is not None:
                 pag.click(pos_back,interval=0.0)
                 break
-    sleep(600)
+        print("Đã đào xong đợi 10p để tiếp tục!!!")
+        sleep(600)
     
         
